@@ -2,22 +2,21 @@
 
 .navbarContainer {
     background-color: #d8d8d8;
-
 }
 
 .navbar {
     padding: 18px 0;
     margin-bottom: 20px;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns:  3fr 10fr 4fr;
     grid-template-areas:
-    "name info info info"
-;
+    "name info info info";
     grid-gap: 20px;
     align-items: center;
 }
 
 .name {
+    color: black;
     font-size: 20px;
     font-weight: 600;
     grid-area: name;
@@ -30,7 +29,7 @@
 }
 
 .section {
-
+    font-weight: 500;
 }
 
 .searchContainer {

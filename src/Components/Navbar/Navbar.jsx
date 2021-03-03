@@ -1,18 +1,19 @@
 import React from 'react'
 import {compose} from "redux";
 import s from './Navbar.module.scss'
+import {NavLink} from "react-router-dom";
 
 const Navbar = (props) => {
     return (
         <div className={s.navbarContainer}>
             <div className={'container'}>
                 <div className={s.navbar}>
-                    <div className={s.name}>
+                    <NavLink to={'/'} className={s.name}>
                         News Agency
-                    </div>
+                    </NavLink>
                     <div className={s.info}>
                         <div className={s.section}>
-
+                            {props.section}
                         </div>
                         <div className={s.searchContainer}>
                             <div className={s.inputContainer}>

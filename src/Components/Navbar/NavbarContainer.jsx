@@ -10,6 +10,7 @@ const NavbarContainer = (props) => {
     const dispatch = useDispatch()
     const {time} = useDate()
     const [letters, handleChangeLetters] = useState('')
+    const [currentSection, setCurrentSection] = useState('')
 
     const handleKeyUp = (e) => {
         if(e.keyCode === 13) {
@@ -17,13 +18,16 @@ const NavbarContainer = (props) => {
         }
     }
 
+    useEffect(() => {
+        setCurrentSection(getCurrentSection(props.section))
+    }, [props.section]);
+
     const handleSubmit = () => {
-        debugger
         dispatch(getNews(letters))
     }
 
     return (
-        <Navbar letters={letters} handleKeyUp={handleKeyUp} handleChangeLetters={handleChangeLetters} time={time} match={props.match} />
+        <Navbar letters={letters} section={currentSection} handleKeyUp={handleKeyUp} handleChangeLetters={handleChangeLetters} time={time} match={props.match} />
     )
 }
 
@@ -50,4 +54,34 @@ export const useDate = () => {
     return {
         time
     };
+};
+
+export const getCurrentSection = (section) => {
+
+    switch (section) {
+        case 'sport': {
+            return 'Спорт'
+        }
+        case 'world': {
+            return 'Мир'
+        }
+        case 'internet': {
+            return 'Интернет'
+        }
+        case 'politics': {
+            return 'Политика'
+        }
+        case 'economic': {
+            return 'Экономика'
+        }
+        case 'culture': {
+            return 'Культура'
+        }
+        case 'science': {
+            return 'Наука'
+        }
+        default: {
+            return 'Главная'
+        }
+    }
 };

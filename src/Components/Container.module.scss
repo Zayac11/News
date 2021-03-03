@@ -1,8 +1,8 @@
 .content {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 3fr 10fr 4fr;
   grid-gap: 20px;
   grid-template-areas:
-  "section main main info"
+  "section main info"
 ;
 }

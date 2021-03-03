@@ -1,5 +1,33 @@
 .sidebar {
     grid-area: section;
-    background-color: blue;
+    //background-color: blue;
     height: 200px;
+    padding: 25px 0;
+}
+
+.title {
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 40px;
+}
+
+.list {
+
+}
+
+.list li {
+    margin-bottom: 30px;
+}
+
+.list li:last-child {
+    margin-bottom: 0;
+}
+
+.link {
+    font-size: 14px;
+    color: black;
+}
+
+.active {
+    font-weight: 500;
 }
