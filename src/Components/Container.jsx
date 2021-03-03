@@ -13,10 +13,10 @@ const Container = (props) => {
 
     return (
         <div className={'outer'}>
+            <NavbarContainer />
             <div className={'container'}>
                 <div className={s.content}>
 
-                    <NavbarContainer />
                     <SectionSidebar />
                     <InfoSidebarContainer />
 

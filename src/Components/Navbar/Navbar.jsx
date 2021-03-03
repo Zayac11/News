@@ -4,8 +4,27 @@ import s from './Navbar.module.scss'
 
 const Navbar = (props) => {
     return (
-        <div className={s.navbar}>
+        <div className={s.navbarContainer}>
+            <div className={'container'}>
+                <div className={s.navbar}>
+                    <div className={s.name}>
+                        News Agency
+                    </div>
+                    <div className={s.info}>
+                        <div className={s.section}>
 
+                        </div>
+                        <div className={s.searchContainer}>
+                            <div className={s.inputContainer}>
+                                <input type="text" onKeyUp={props.handleKeyUp} value={props.letters} onChange={ (e) => props.handleChangeLetters(e.target.value)} placeholder={'Поиск'} className={s.input}/>
+                            </div>
+                            <div className={s.time}>
+                                {props.time}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     )
 }

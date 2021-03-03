@@ -1,5 +1,60 @@
+@import "src/Common/style";
+
+.navbarContainer {
+    background-color: #d8d8d8;
+
+}
+
 .navbar {
-    grid-area: navbar;
-    background-color: red;
-    height: 200px;
+    padding: 18px 0;
+    margin-bottom: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-areas:
+    "name info info info"
+;
+    grid-gap: 20px;
+    align-items: center;
+}
+
+.name {
+    font-size: 20px;
+    font-weight: 600;
+    grid-area: name;
+}
+
+.info {
+    grid-area: info;
+    @include flexible();
+    justify-content: space-between;
+}
+
+.section {
+
+}
+
+.searchContainer {
+    @include flexible();
+}
+
+.inputContainer {
+    margin-right: 50px;
+}
+
+.input {
+    display: block;
+    outline: none;
+    border: 1px solid black;
+    font-size: 16px;
+    padding: 11px 20px;
+    background-color: transparent;
+}
+
+.input::placeholder {
+    font-size: 16px;
+    color: black;
+}
+
+.time {
+
 }
