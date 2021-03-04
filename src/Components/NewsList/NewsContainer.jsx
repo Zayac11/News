@@ -8,7 +8,7 @@ import {getCurrentSection} from "../../Common/getCurrentSection";
 
 const NewsListContainer = (props) => {
 
-    const [newsStructure, toggleNewsStructure] = useState('large')
+    const [checked, setChecked] = useState(localStorage.getItem('checked') === 'true')
     const dispatch = useDispatch()
 
     const newsCards = useSelector(state => state.news.newsCards);
@@ -33,12 +33,17 @@ const NewsListContainer = (props) => {
         else {
             dispatch(getRecentNews('', pageNumber))
         }
+    }
 
+    const handleCheck = (checked) => {
+        setChecked(checked)
+        localStorage.setItem('checked', checked);
     }
 
     return (
         <NewsList title={'Новости'} count={count} pageSize={pageSize} currentPage={currentPage}
-                  onPageChanged={onPageChanged} newsCards={newsCards} newsStructure={newsStructure} />
+                  checked={checked} handleCheck={handleCheck}
+                  onPageChanged={onPageChanged} newsCards={newsCards} />
     )
 }
 

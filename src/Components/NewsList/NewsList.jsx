@@ -5,6 +5,7 @@ import {withRequestFetching} from "../../hoc/withRequestFetching";
 import NewsItemLarge from "./NewsItemLarge/NewsItemLarge";
 import NewsItemSmall from "./NewsItemSmall/NewsItemSmall";
 import Paginator from "../../Common/Paginator/Paginator";
+import SwitchNews from "../../Common/Switch/Switch";
 
 //Общая компонента с выводом карточек новостей
 const NewsList = (props) => {
@@ -13,7 +14,7 @@ const NewsList = (props) => {
             <div className={s.top}>
                 <h2 className={s.title}>{props.title}</h2>
                 <div className={s.toggle}>
-                    toggle
+                   <span>Отображение</span><SwitchNews handleCheck={props.handleCheck} checked={props.checked} />
                 </div>
             </div>
 
@@ -22,7 +23,7 @@ const NewsList = (props) => {
                     props.newsCards &&
                         props.newsCards.length > 0 ?
                         (
-                            props.newsStructure === 'large'?
+                            !props.checked ?
                                 <div className={s.largeContainer}>
                                     {props.newsCards.map(n => {
                                         return (
@@ -31,8 +32,7 @@ const NewsList = (props) => {
                                     })}
                                 </div>
 
-                            : props.newsStructure === 'small' &&
-                                <div className={s.smallContainer}>
+                            : <div className={s.smallContainer}>
                                     {props.newsCards.map(n => {
                                         return (
                                             <NewsItemSmall key={n.id} {...n} />

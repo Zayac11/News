@@ -20,7 +20,11 @@
 }
 
 .toggle {
+    @include flexible();
+}
 
+.toggle span {
+    margin-right: 10px;
 }
 
 .content {
