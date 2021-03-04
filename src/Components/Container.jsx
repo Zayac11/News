@@ -1,7 +1,6 @@
-import React, {useEffect, useState} from "react"
+import React, {useState} from "react"
 import {compose} from "redux";
 import {Route, Switch, withRouter} from 'react-router-dom'
-import MainContainer from "./Main/MainContainer";
 import s from './Container.module.scss'
 import InfoSidebarContainer from "./InfoSidebar/InfoSidebarContainer";
 import SectionSidebar from "./SectionsSidebar/SectionSidebar";
@@ -22,7 +21,7 @@ const Container = (props) => {
                     <InfoSidebarContainer />
 
                     <Switch>
-                        <Route exact path='/' render={ () => <MainContainer setSection={setSection} />} />
+                        <Route exact path='/' render={ () => <NewsListContainer setSection={setSection} />} />
                         <Route exact path='/news/:section' render={ () => <NewsListContainer setSection={setSection} />} />
                     </Switch>
                 </div>

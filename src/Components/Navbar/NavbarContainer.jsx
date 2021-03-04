@@ -3,7 +3,8 @@ import {compose} from "redux";
 import Navbar from "./Navbar";
 import {withRouter} from "react-router-dom";
 import {useDispatch} from "react-redux";
-import {getNews} from "../../redux/news-reducer";
+import {getRecentNews} from "../../redux/news-reducer";
+import {getCurrentSection} from "../../Common/getCurrentSection";
 
 const NavbarContainer = (props) => {
 
@@ -18,13 +19,13 @@ const NavbarContainer = (props) => {
         }
     }
 
+    const handleSubmit = () => {
+        dispatch(getRecentNews(letters, 1))
+    }
+
     useEffect(() => {
         setCurrentSection(getCurrentSection(props.section))
     }, [props.section]);
-
-    const handleSubmit = () => {
-        dispatch(getNews(letters))
-    }
 
     return (
         <Navbar letters={letters} section={currentSection} handleKeyUp={handleKeyUp} handleChangeLetters={handleChangeLetters} time={time} match={props.match} />
@@ -54,34 +55,4 @@ export const useDate = () => {
     return {
         time
     };
-};
-
-export const getCurrentSection = (section) => {
-
-    switch (section) {
-        case 'sport': {
-            return 'Спорт'
-        }
-        case 'world': {
-            return 'Мир'
-        }
-        case 'internet': {
-            return 'Интернет'
-        }
-        case 'politics': {
-            return 'Политика'
-        }
-        case 'economic': {
-            return 'Экономика'
-        }
-        case 'culture': {
-            return 'Культура'
-        }
-        case 'science': {
-            return 'Наука'
-        }
-        default: {
-            return 'Главная'
-        }
-    }
 };

@@ -1,0 +1,38 @@
+@import "src/Common/style";
+
+.newsList {
+    grid-area: main;
+    border-radius: 2px;
+    background-color: #d8d8d8;
+    height: 100%;
+    padding: 25px 60px 0;
+}
+
+.top {
+    margin-bottom: 25px;
+    @include flexible();
+    justify-content: space-between;
+}
+
+.title {
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.toggle {
+
+}
+
+.content {
+    margin-bottom: 30px;
+}
+
+.largeContainer {
+
+}
+
+.smallContainer {
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: 1fr 1fr;
+}

@@ -2,10 +2,14 @@ import {newsApi} from "../api/api";
 import {toggleIsFetching} from "./auth-reducer";
 
 const SET_NEWS = 'SET_NEWS'
+const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE'
 
 let initialState = {
     isFetch: false,
-    news: [], //Список арен
+    newsCards: [], //Список новостей
+    count: 0, //Общее число новостей
+    pageSize: 1, //Сколько карточек выводится на странице, пока стоит единица
+    currentPage: 1, //Номер текущей страницы
 }
 
 const newsReducer = (state = initialState, action) => {
@@ -13,7 +17,13 @@ const newsReducer = (state = initialState, action) => {
         case SET_NEWS:
             return {
                 ...state,
-                news: action.news
+                newsCards: action.news.products,
+                count: action.news.count,
+            }
+        case SET_CURRENT_PAGE:
+            return {
+                ...state,
+                currentPage: action.currentPage,
             }
         default:
             return state;
@@ -21,22 +31,44 @@ const newsReducer = (state = initialState, action) => {
 }
 
 export const setNews = (news) => ({type: SET_NEWS, news})
+export const setCurrentPage = (currentPage) => ({type: SET_CURRENT_PAGE, currentPage})
 
-export const getNews = (letters) => { //Получение списка новостей
+export const getRecentNews = (letters, pageNumber) => { //Получение списка последних новостей
     return async (dispatch) => {
         dispatch(toggleIsFetching(true))
         try {
-            let response = await newsApi.getNews(letters)
-            console.log('getNews', response)
-
+            let response = await newsApi.getRecentNews(letters, pageNumber)
+            console.log('getRecentNews', response)
             if(response.status === 200) {
-                dispatch(setNews(response.data.data))
+                dispatch(setNews(response.data))
+                dispatch(setCurrentPage(pageNumber))
+
             }
             dispatch(toggleIsFetching(false))
         }
         catch (error) {
-            console.log('getNewsError', error.toJSON())
-            window.alert('getNews Error')
+            console.log('getRecentNewsError', error.toJSON())
+            window.alert('getRecentNews Error')
+            dispatch(toggleIsFetching(false))
+        }
+    }
+}
+
+export const getNewsCategory = (category, pageNumber) => { //Получение новостей по категории
+    return async (dispatch) => {
+        dispatch(toggleIsFetching(true))
+        try {
+            let response = await newsApi.getNewsCategory(category, pageNumber)
+            console.log('getNewsCategory', response)
+            if(response.status === 200) {
+                dispatch(setNews(response.data))
+                dispatch(setCurrentPage(pageNumber))
+            }
+            dispatch(toggleIsFetching(false))
+        }
+        catch (error) {
+            console.log('getNewsCategoryError', error.toJSON())
+            window.alert('getNewsCategory Error')
             dispatch(toggleIsFetching(false))
         }
     }
