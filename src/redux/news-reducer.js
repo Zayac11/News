@@ -10,6 +10,39 @@ let initialState = {
     count: 0, //Общее число новостей
     pageSize: 1, //Сколько карточек выводится на странице, пока стоит единица
     currentPage: 1, //Номер текущей страницы
+
+    newsData: {
+        content: {
+            call: {
+                "entityMap":{
+
+                },
+                "blocks":[
+                    {
+                        "key":"637gr",
+                        "text":"Hello wanderer",
+                        "type":"unstyled",
+                        "depth":0,
+                        "inlineStyleRanges":[
+
+                        ],
+                        "entityRanges":[
+
+                        ],
+                        "data":{
+
+                        }
+                    }
+                ]
+            },
+            wait: "",
+        },
+        title: 'Hoba',
+        short_description: 'Hobaboba',
+        img: 'imgg',
+        category: 'Мир',
+        id: 228
+    }
 }
 
 const newsReducer = (state = initialState, action) => {

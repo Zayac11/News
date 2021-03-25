@@ -7,6 +7,7 @@ import SectionSidebar from "./SectionsSidebar/SectionSidebar";
 import NavbarContainer from "./Navbar/NavbarContainer";
 import NewsListContainer from "./NewsList/NewsContainer";
 import CreateNewsContainer from "./CreateNews/CreateNewsContainer";
+import UpdateNewsContainer from "./UpdateNews/UpdateNewsContainer";
 
 const Container = (props) => {
 
@@ -25,7 +26,7 @@ const Container = (props) => {
                     <Switch>
                         <Route exact path='/' render={ () => <NewsListContainer setSection={setSection} />} />
                         <Route exact path='/create_news' render={ () => <CreateNewsContainer setSection={setSection} />} /> {/*Создание новости*/}
-                        <Route exact path='/create_news/:newsId' render={ () => <NewsListContainer setSection={setSection} />} /> {/*Редактирование новости*/}
+                        <Route exact path='/create_news/:newsId' render={ () => <UpdateNewsContainer setSection={setSection} />} /> {/*Редактирование новости*/}
                         <Route exact path='/news/:section' render={ () => <NewsListContainer setSection={setSection} />} />
                     </Switch>
                 </div>
