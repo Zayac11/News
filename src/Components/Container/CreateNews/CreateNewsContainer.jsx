@@ -38,7 +38,7 @@ const CreateNewsContainer = (props) => {
     }
 
     return (
-        <NewsForm onSubmit={onSubmit} />
+        <NewsForm onSubmit={onSubmit} setContentState={setContentState} setEditorState={setEditorState} contentState={contentState} editorState={editorState} />
     )
 }
 

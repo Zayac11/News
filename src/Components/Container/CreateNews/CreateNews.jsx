@@ -1,8 +1,10 @@
 import React from 'react'
+import { Editor } from 'react-draft-wysiwyg';
 import {ErrorMessage, Field, Form, Formik} from "formik";
 import TextError from "../../../Common/TextError/TextError";
 import NewsInput from "../../../Common/NewsInput/NewsInput";
 import s from './CreateNews.module.scss'
+import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 
 const CreateNews = (props) => {
 
@@ -38,7 +40,13 @@ const CreateNews = (props) => {
                                 <ErrorMessage name="description" component={TextError} />
                             </div>
 
-                            {/*Содержание*/}
+                            <Editor
+                                editorState={props.editorState}
+                                readOnly = {false}
+                                toolbarHidden = {false}
+                                onContentStateChange={props.setContentState}
+                                onEditorStateChange={props.setEditorState}
+                            />
 
                             <div className={s.section}>
                                 <label className={s.label}  htmlFor="section">Выберите раздел</label>

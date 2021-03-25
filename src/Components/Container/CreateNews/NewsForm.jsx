@@ -25,7 +25,7 @@ const NewsForm = (props) => {
     })
 
     return (
-        <CreateNews onSubmit={props.onSubmit} validationSchema={validationSchema} initialValues={initialValues} />
+        <CreateNews {...props} onSubmit={props.onSubmit} validationSchema={validationSchema} initialValues={initialValues} />
     )
 }
 
