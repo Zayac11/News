@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import { EditorState, convertFromRaw } from 'draft-js';
-import NewsForm from "./NewsForm";
+import CreateNewsForm from "./CreateNewsForm";
 
 
 const CreateNewsContainer = (props) => {
@@ -38,7 +38,7 @@ const CreateNewsContainer = (props) => {
     }
 
     return (
-        <NewsForm onSubmit={onSubmit} setContentState={setContentState} setEditorState={setEditorState} contentState={contentState} editorState={editorState} />
+        <CreateNewsForm onSubmit={onSubmit} setContentState={setContentState} setEditorState={setEditorState} contentState={contentState} editorState={editorState} />
     )
 }
 

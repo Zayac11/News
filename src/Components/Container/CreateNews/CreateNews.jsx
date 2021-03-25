@@ -56,13 +56,13 @@ const CreateNews = (props) => {
                                     id="section"
                                     name="section"
                                 >
-                                    <option value="sport">Спорт</option>
-                                    <option value="world">Мир</option>
-                                    <option value="internet">Интернет</option>
-                                    <option value="politics">Политика</option>
-                                    <option value="economic">Экономика</option>
-                                    <option value="culture">Культура</option>
-                                    <option value="science">Наука</option>
+                                    <option value="Спорт">Спорт</option>
+                                    <option value="Мир">Мир</option>
+                                    <option value="Интернет">Интернет</option>
+                                    <option value="Политика">Политика</option>
+                                    <option value="Экономика">Экономика</option>
+                                    <option value="Культура">Культура</option>
+                                    <option value="Наука">Наука</option>
                                 </Field>
                             </div>
 
@@ -83,7 +83,9 @@ const CreateNews = (props) => {
                                                         ?
                                                             <label htmlFor="img">{values.img.name}</label>
                                                         :
-                                                            <label htmlFor="img">Загрузить превью статьи</label>
+                                                            values.img !== ''
+                                                            ? <label htmlFor="img">Обновить превью статьи</label>
+                                                            : <label htmlFor="img">Загрузить превью статьи</label>
                                                     }
                                                 </>
                                         }
