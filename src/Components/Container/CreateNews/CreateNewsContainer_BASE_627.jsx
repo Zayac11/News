@@ -1,13 +1,10 @@
 import React, {useState} from 'react'
 import { EditorState, convertFromRaw } from 'draft-js';
-import CreateNewsForm from "./CreateNewsForm";
-import {compose} from "redux";
-import {withAuthRedirect} from "../../../hoc/withAuthRedirect";
-import {useDispatch} from "react-redux";
-import {createNews} from "../../../redux/news-reducer";
+import NewsForm from "./NewsForm";
+
 
 const CreateNewsContainer = (props) => {
-    const dispatch = useDispatch()
+
     const content = {
         "entityMap":{
 
@@ -38,14 +35,11 @@ const CreateNewsContainer = (props) => {
         console.log(values)
         console.log(contentState)
         console.log(editorState)
-        dispatch(createNews(values.name, values.img, values.description, editorState, values.section))
     }
 
     return (
-        <CreateNewsForm onSubmit={onSubmit} setContentState={setContentState} setEditorState={setEditorState} contentState={contentState} editorState={editorState} />
+        <NewsForm onSubmit={onSubmit} setContentState={setContentState} setEditorState={setEditorState} contentState={contentState} editorState={editorState} />
     )
 }
 
-export default compose(
-    withAuthRedirect,
-)(CreateNewsContainer)
+export default CreateNewsContainer

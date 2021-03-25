@@ -35,6 +35,23 @@ export const newsApi = {
         return axios.post(baseUrl +`api/news_of_current_category?page=${pageNumber}`, data)
     },
 
+    createNews(title, img, short_description, content, category) { //Создание новости
+        let data = getFormData([{name: 'title', value: title}, {name: 'img', value: img}, {name: 'short_description', value: short_description},
+            {name: 'content', value: content}, {name: 'category', value: category}])
+        return axios.post(baseUrl +`api/add_or_change_message`, data)
+    },
+
+    updateNews(newsId, title, img, short_description, content, category) { //Создание новости
+        let data = getFormData([{name: 'title', value: title}, {name: 'img', value: img}, {name: 'short_description', value: short_description},
+            {name: 'content', value: content}, {name: 'category', value: category}, {name: 'newsId', value: newsId}])
+        return axios.put(baseUrl +`api/add_or_change_message`, data)
+    },
+
+    deleteNews(newsId) { //Создание новости
+        let data = getFormData([{name: 'newsId', value: newsId}])
+        return axios.delete(baseUrl +`api/add_or_change_message`, data)
+    },
+
 }
 export const authApi = {
 

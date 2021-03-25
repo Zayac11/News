@@ -14,9 +14,9 @@ const Navbar = (props) => {
                         </NavLink>
                         {
                             props.isAuth &&
-                                <div className={s.admin}>
-                                    Администратор
-                                </div>
+                            <div className={s.admin}>
+                                Администратор
+                            </div>
                         }
                     </div>
                     <div className={s.info}>

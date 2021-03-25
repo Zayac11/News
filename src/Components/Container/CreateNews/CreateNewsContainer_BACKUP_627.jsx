@@ -1,10 +1,14 @@
 import React, {useState} from 'react'
 import { EditorState, convertFromRaw } from 'draft-js';
 import CreateNewsForm from "./CreateNewsForm";
+<<<<<<< HEAD
+
+=======
 import {compose} from "redux";
 import {withAuthRedirect} from "../../../hoc/withAuthRedirect";
 import {useDispatch} from "react-redux";
 import {createNews} from "../../../redux/news-reducer";
+>>>>>>> news
 
 const CreateNewsContainer = (props) => {
     const dispatch = useDispatch()
