@@ -8,13 +8,24 @@ const Navbar = (props) => {
         <div className={s.navbarContainer}>
             <div className={'container'}>
                 <div className={s.navbar}>
-                    <NavLink to={'/'} className={s.name}>
-                        News Agency
-                    </NavLink>
+                    <div className={s.nameContainer}>
+                        <NavLink to={'/'} className={s.name}>
+                            News Agency
+                        </NavLink>
+                        {
+                            props.isAuth &&
+                                <div className={s.admin}>
+                                    Администратор
+                                </div>
+                        }
+                    </div>
                     <div className={s.info}>
-                        {/*<div className={s.section}>*/}
-                        {/*    {props.section}*/}
-                        {/*</div>*/}
+                        {
+                            props.isAuth &&
+                            <NavLink to={'/create_news'} className={s.createBtn}>
+                                Создать статью
+                            </NavLink>
+                        }
                         <div className={s.searchContainer}>
                             <div className={s.inputContainer}>
                                 <input type="text" onKeyUp={props.handleKeyUp} value={props.letters} onChange={ (e) => props.handleChangeLetters(e.target.value)} placeholder={'Поиск'} className={s.input}/>

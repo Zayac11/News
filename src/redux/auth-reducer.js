@@ -5,7 +5,7 @@ const SET_IS_AUTH = 'SET_IS_AUTH'
 
 let initialState = {
     isFetch: false,
-    isAuth: false, //Залогинен ли пользователь
+    isAuth: true, //Залогинен ли пользователь
 }
 
 const authReducer = (state = initialState, action) => {

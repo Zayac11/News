@@ -2,13 +2,14 @@ import React, {useState, useEffect} from 'react'
 import {compose} from "redux";
 import Navbar from "./Navbar";
 import {withRouter} from "react-router-dom";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {getRecentNews} from "../../../redux/news-reducer";
 import {getCurrentSection} from "../../../Common/getCurrentSection";
 
 const NavbarContainer = (props) => {
 
     const dispatch = useDispatch()
+    const isAuth = useSelector(state => state.auth.isAuth);
     const {time} = useDate()
     const [letters, handleChangeLetters] = useState('')
     const [currentSection, setCurrentSection] = useState('')
@@ -28,7 +29,7 @@ const NavbarContainer = (props) => {
     }, [props.section]);
 
     return (
-        <Navbar letters={letters} section={currentSection} handleKeyUp={handleKeyUp} handleChangeLetters={handleChangeLetters} time={time} match={props.match} />
+        <Navbar isAuth={isAuth} letters={letters} section={currentSection} handleKeyUp={handleKeyUp} handleChangeLetters={handleChangeLetters} time={time} match={props.match} />
     )
 }
 
