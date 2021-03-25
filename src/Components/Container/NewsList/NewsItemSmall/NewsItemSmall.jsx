@@ -5,7 +5,7 @@ import {NavLink} from "react-router-dom";
 
 const NewsItemSmall = (props) => {
     return (
-        <NavLink to={`/${props.id}`} className={s.news}>
+        <NavLink to={`/current_news/${props.id}`} className={s.news}>
             <h5 className={s.title}>
                 {props.title}
             </h5>
