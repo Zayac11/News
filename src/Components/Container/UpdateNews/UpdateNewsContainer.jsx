@@ -4,6 +4,7 @@ import UpdateNewsForm from "./UpdateNewsForm";
 import {useSelector} from "react-redux";
 import {compose} from "redux";
 import {withRouter} from "react-router-dom";
+import {withAuthRedirect} from "../../../hoc/withAuthRedirect";
 
 const UpdateNewsContainer = (props) => {
 
@@ -26,4 +27,5 @@ const UpdateNewsContainer = (props) => {
 
 export default compose(
     withRouter,
+    withAuthRedirect,
 )(UpdateNewsContainer)

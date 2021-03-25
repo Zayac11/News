@@ -1,6 +1,8 @@
 import React, {useState} from 'react'
 import { EditorState, convertFromRaw } from 'draft-js';
 import CreateNewsForm from "./CreateNewsForm";
+import {compose} from "redux";
+import {withAuthRedirect} from "../../../hoc/withAuthRedirect";
 
 const CreateNewsContainer = (props) => {
 
@@ -41,4 +43,6 @@ const CreateNewsContainer = (props) => {
     )
 }
 
-export default CreateNewsContainer
+export default compose(
+    withAuthRedirect,
+)(CreateNewsContainer)
