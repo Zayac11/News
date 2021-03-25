@@ -23,7 +23,6 @@ const Container = (props) => {
                     <SectionSidebar />
                     <InfoSidebarContainer />
 
-
                     <Switch>
                         <Route exact path='/' render={ () => <NewsListContainer setSection={setSection} />} />
                         <Route exact path='/create_news' render={ () => <CreateNewsContainer />} /> {/*Создание новости*/}

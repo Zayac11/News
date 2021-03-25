@@ -6,9 +6,18 @@
     padding: 30px 30px 20px;
 }
 
-.title {
+.top {
+    @include flexible();
     margin-bottom: 30px;
+    justify-content: space-between;
+}
+
+.title {
     font-size: 18px;
     font-weight: 500;
-
 }
+
+.time {
+    font-size: 14px;
+}
+

@@ -3,6 +3,7 @@ import {toggleIsFetching} from "./auth-reducer";
 
 const SET_NEWS = 'SET_NEWS'
 const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE'
+const SET_NEWS_DATA = 'SET_NEWS_DATA'
 
 let initialState = {
     isFetch: false,
@@ -41,7 +42,8 @@ let initialState = {
         short_description: 'Hobaboba',
         img: 'imgg',
         category: 'Мир',
-        id: 228
+        id: 228,
+        created_at: 'Вчера'
     }
 }
 
@@ -58,12 +60,18 @@ const newsReducer = (state = initialState, action) => {
                 ...state,
                 currentPage: action.currentPage,
             }
+        case SET_NEWS_DATA:
+            return {
+                ...state,
+                newsData: action.newsData,
+            }
         default:
             return state;
     }
 }
 
 export const setNews = (news) => ({type: SET_NEWS, news})
+export const setCurrentNews = (newsData) => ({type: SET_NEWS_DATA, newsData})
 export const setCurrentPage = (currentPage) => ({type: SET_CURRENT_PAGE, currentPage})
 
 export const getRecentNews = (letters, pageNumber) => { //Получение списка последних новостей
@@ -102,6 +110,65 @@ export const getNewsCategory = (category, pageNumber) => { //Получение 
         catch (error) {
             console.log('getNewsCategoryError', error.toJSON())
             window.alert('getNewsCategory Error')
+            dispatch(toggleIsFetching(false))
+        }
+    }
+}
+
+export const createNews = (title, img, short_description, content, category) => { //Создание новости
+    return async (dispatch) => {
+        dispatch(toggleIsFetching(true))
+        debugger
+        try {
+            let response = await newsApi.createNews(title, img, short_description, content, category)
+            console.log('createNews', response)
+            if(response.status === 200) {
+                debugger
+                dispatch(setCurrentNews(response.data))
+            }
+            dispatch(toggleIsFetching(false))
+        }
+        catch (error) {
+            console.log('createNews', error.toJSON())
+            window.alert('createNews Error')
+            dispatch(toggleIsFetching(false))
+        }
+    }
+}
+export const updateNews = (newsId, title, img, short_description, content, category) => { //Изменение новости
+    return async (dispatch) => {
+        dispatch(toggleIsFetching(true))
+        try {
+            let response = await newsApi.updateNews(newsId,title, img, short_description, content, category)
+            console.log('updateNews', response)
+            if(response.status === 200) {
+                debugger
+                // dispatch(setCurrentNews(response.data))
+            }
+            dispatch(toggleIsFetching(false))
+        }
+        catch (error) {
+            console.log('updateNews', error.toJSON())
+            window.alert('updateNews Error')
+            dispatch(toggleIsFetching(false))
+        }
+    }
+}
+export const deleteNews = (newsId) => { //Удаление новости
+    return async (dispatch) => {
+        dispatch(toggleIsFetching(true))
+        try {
+            let response = await newsApi.deleteNews(newsId)
+            console.log('deleteNews', response)
+            if(response.status === 200) {
+                debugger
+                // dispatch(setCurrentNews(response.data))
+            }
+            dispatch(toggleIsFetching(false))
+        }
+        catch (error) {
+            console.log('deleteNews', error.toJSON())
+            window.alert('deleteNews Error')
             dispatch(toggleIsFetching(false))
         }
     }

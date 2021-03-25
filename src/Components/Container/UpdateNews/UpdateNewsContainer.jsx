@@ -1,13 +1,14 @@
 import React, {useState} from 'react'
 import { EditorState, convertFromRaw } from 'draft-js';
 import UpdateNewsForm from "./UpdateNewsForm";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {compose} from "redux";
 import {withRouter} from "react-router-dom";
 import {withAuthRedirect} from "../../../hoc/withAuthRedirect";
+import {updateNews} from "../../../redux/news-reducer";
 
 const UpdateNewsContainer = (props) => {
-
+    const dispatch = useDispatch()
     let newsId = props.match.params.newsId
     const newsData = useSelector(state => state.news.newsData);
     let content = newsData.content.call
@@ -18,6 +19,7 @@ const UpdateNewsContainer = (props) => {
         console.log(values)
         console.log(contentState)
         console.log(editorState)
+        dispatch(updateNews(newsId, values.name, values.img, values.description, editorState, values.section))
     }
 
     return (
