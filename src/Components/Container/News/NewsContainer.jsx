@@ -3,19 +3,26 @@ import {compose} from "redux";
 import {withRouter} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import News from "./News";
-import {convertFromRaw, EditorState} from "draft-js";
+import {getCurrentNews} from "../../../redux/news-reducer";
+import NewsForm from "./NewsForm";
+import Preloader from "../../../Common/Preloader/Preloader";
 
 const NewsContainer = (props) => {
 
     const dispatch = useDispatch()
     const isAuth = useSelector(state => state.auth.isAuth);
     const newsData = useSelector(state => state.news.newsData);
-    let content = newsData.content.call
-    const [contentState, setContentState] = useState(content)
-    const [editorState, setEditorState] = useState(EditorState.createWithContent(convertFromRaw(content)))
 
+    useEffect(() => {
+
+        dispatch(getCurrentNews(props.match.params.newsId))
+    }, [dispatch, props.match.params.newsId]);
+    debugger
+    if(!newsData.content) {
+        return <Preloader />
+    }
     return (
-        <News isAuth={isAuth} editorState={editorState} contentState={contentState} newsData={newsData} match={props.match} />
+        <NewsForm isAuth={isAuth} newsData={newsData} />
     )
 }
 

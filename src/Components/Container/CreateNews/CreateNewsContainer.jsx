@@ -34,11 +34,11 @@ const CreateNewsContainer = (props) => {
     const [contentState, setContentState] = useState(content)
     const [editorState, setEditorState] = useState( EditorState.createWithContent(convertFromRaw(content)))
 
-    const onSubmit = (values) => {
+    const onSubmit = (values, actions) => {
         console.log(values)
         console.log(contentState)
         console.log(editorState)
-        dispatch(createNews(values.name, values.img, values.description, editorState, values.section))
+        dispatch(createNews(values.name, values.img, values.description, contentState, values.section, actions.setSubmitting))
     }
 
     return (

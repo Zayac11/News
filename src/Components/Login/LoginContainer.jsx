@@ -1,8 +1,8 @@
-import React, {useEffect, useState} from "react"
+import React, {useEffect} from "react"
 import {compose} from "redux";
 import LoginForm from "./LoginForm";
 import {useDispatch} from "react-redux";
-import {setIsAuth} from "../../redux/auth-reducer";
+import {logout} from "../../redux/auth-reducer";
 import {login} from "../../redux/auth-reducer";
 
 const LoginContainer = (props) => {
@@ -10,11 +10,11 @@ const LoginContainer = (props) => {
     const dispatch = useDispatch()
 
     useEffect(() => {
-        dispatch(setIsAuth(false))
+        dispatch(logout())
     },);
 
-    const onSubmit = (values) => {
-        dispatch(login(values.username, values.password))
+    const onSubmit = (values, actions) => {
+        dispatch(login(values.username, values.password, actions.setSubmitting))
     }
 
     return (

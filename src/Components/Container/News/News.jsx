@@ -5,7 +5,6 @@ import {Editor} from "react-draft-wysiwyg";
 import s from './News.module.scss'
 
 const News = ({newsData, ...props}) => {
-
     return (
         <div className={s.news}>
             <div className={s.top}>

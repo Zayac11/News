@@ -37,3 +37,6 @@
 .submitBtn:hover {
     background-color: #191919;
 }
+.submitBtn:disabled {
+    background-color: deepskyblue;
+}

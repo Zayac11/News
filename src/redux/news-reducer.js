@@ -9,42 +9,9 @@ let initialState = {
     isFetch: false,
     newsCards: [], //Список новостей
     count: 0, //Общее число новостей
-    pageSize: 1, //Сколько карточек выводится на странице, пока стоит единица
+    pageSize: 3, //Сколько карточек выводится на странице, пока стоит единица
     currentPage: 1, //Номер текущей страницы
-
-    newsData: {
-        content: {
-            call: {
-                "entityMap":{
-
-                },
-                "blocks":[
-                    {
-                        "key":"637gr",
-                        "text":"Hello wanderer",
-                        "type":"unstyled",
-                        "depth":0,
-                        "inlineStyleRanges":[
-
-                        ],
-                        "entityRanges":[
-
-                        ],
-                        "data":{
-
-                        }
-                    }
-                ]
-            },
-            wait: "",
-        },
-        title: 'Hoba',
-        short_description: 'Hobaboba',
-        img: 'imgg',
-        category: 'Мир',
-        id: 228,
-        created_at: 'Вчера'
-    }
+    newsData: {},
 }
 
 const newsReducer = (state = initialState, action) => {
@@ -63,7 +30,14 @@ const newsReducer = (state = initialState, action) => {
         case SET_NEWS_DATA:
             return {
                 ...state,
-                newsData: action.newsData,
+                newsData: {
+                    ...action.newsData,
+                    content: JSON.parse(action.newsData.content),
+                    title: action.newsData.title,
+                    short_description: action.newsData.short_description,
+                    img: action.newsData.img,
+                    category: action.newsData.title,
+                },
             }
         default:
             return state;
@@ -94,6 +68,24 @@ export const getRecentNews = (letters, pageNumber) => { //Получение с�
         }
     }
 }
+export const getCurrentNews = (newsId) => { //Получение новости
+    return async (dispatch) => {
+        dispatch(toggleIsFetching(true))
+        try {
+            let response = await newsApi.getCurrentNews(newsId)
+            console.log('getCurrentNews', response)
+            if(response.status === 200) {
+                dispatch(setCurrentNews(response.data.data))
+            }
+            dispatch(toggleIsFetching(false))
+        }
+        catch (error) {
+            // console.log('getCurrentNews Error', error.toJSON())
+            // window.alert('getCurrentNews Error')
+            // dispatch(toggleIsFetching(false))
+        }
+    }
+}
 
 export const getNewsCategory = (category, pageNumber) => { //Получение новостей по категории
     return async (dispatch) => {
@@ -115,10 +107,9 @@ export const getNewsCategory = (category, pageNumber) => { //Получение 
     }
 }
 
-export const createNews = (title, img, short_description, content, category) => { //Создание новости
+export const createNews = (title, img, short_description, content, category, setSubmitting) => { //Создание новости
     return async (dispatch) => {
         dispatch(toggleIsFetching(true))
-        debugger
         try {
             let response = await newsApi.createNews(title, img, short_description, content, category)
             console.log('createNews', response)
@@ -129,20 +120,20 @@ export const createNews = (title, img, short_description, content, category) => 
             dispatch(toggleIsFetching(false))
         }
         catch (error) {
-            console.log('createNews', error.toJSON())
-            window.alert('createNews Error')
-            dispatch(toggleIsFetching(false))
+            // console.log('createNews', error.toJSON())
+            // window.alert('createNews Error')
+            // setSubmitting(false)
+            // dispatch(toggleIsFetching(false))
         }
     }
 }
-export const updateNews = (newsId, title, img, short_description, content, category) => { //Изменение новости
+export const updateNews = (newsId, title, img, short_description, content, category, setSubmitting) => { //Изменение новости
     return async (dispatch) => {
         dispatch(toggleIsFetching(true))
         try {
             let response = await newsApi.updateNews(newsId,title, img, short_description, content, category)
             console.log('updateNews', response)
             if(response.status === 200) {
-                debugger
                 // dispatch(setCurrentNews(response.data))
             }
             dispatch(toggleIsFetching(false))
@@ -150,11 +141,12 @@ export const updateNews = (newsId, title, img, short_description, content, categ
         catch (error) {
             console.log('updateNews', error.toJSON())
             window.alert('updateNews Error')
+            setSubmitting(false)
             dispatch(toggleIsFetching(false))
         }
     }
 }
-export const deleteNews = (newsId) => { //Удаление новости
+export const deleteNews = (newsId, setSubmitting) => { //Удаление новости
     return async (dispatch) => {
         dispatch(toggleIsFetching(true))
         try {
@@ -169,6 +161,7 @@ export const deleteNews = (newsId) => { //Удаление новости
         catch (error) {
             console.log('deleteNews', error.toJSON())
             window.alert('deleteNews Error')
+            setSubmitting(false)
             dispatch(toggleIsFetching(false))
         }
     }

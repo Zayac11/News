@@ -1,6 +1,5 @@
 import React from "react";
 import s from './NewsItemLarge.module.scss'
-import image from '../../../../assets/images/unnamed (1).jpg'
 import {NavLink} from "react-router-dom";
 
 const NewsItemLarge = (props) => {
@@ -15,8 +14,7 @@ const NewsItemLarge = (props) => {
                 </div>
             </div>
             <div className={s.img}>
-                {/*<img src={props.img} alt="news"/>*/}
-                <img src={image} alt="news"/>
+                <img src={props.img} alt="news"/>
             </div>
             <div className={s.description}>
                 {props.short_description}

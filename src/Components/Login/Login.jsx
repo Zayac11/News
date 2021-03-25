@@ -8,7 +8,6 @@ import TextError from "../../Common/TextError/TextError";
 
 const Login = (props) => {
 
-
     return (
         <div className={'outer'}>
             <NavbarContainer />

@@ -4,7 +4,7 @@ import * as Yup from "yup";
 import CreateNews from "../CreateNews/CreateNews";
 import {withRequestFetching} from "../../../hoc/withRequestFetching";
 
-const NewsForm = ({newsData, ...props}) => {
+const UpdateNewsForm = ({newsData, ...props}) => {
 
     const initialValues = {
         name: newsData.title, // Название статьи
@@ -39,4 +39,4 @@ const NewsForm = ({newsData, ...props}) => {
 
 export default compose(
     withRequestFetching,
-)(NewsForm)
+)(UpdateNewsForm)

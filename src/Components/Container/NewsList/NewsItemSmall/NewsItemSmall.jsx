@@ -1,6 +1,5 @@
 import React from "react";
 import s from './NewsItemSmall.module.scss'
-import image from '../../../../assets/images/unnamed (1).jpg'
 import {NavLink} from "react-router-dom";
 
 const NewsItemSmall = (props) => {
@@ -10,8 +9,7 @@ const NewsItemSmall = (props) => {
                 {props.title}
             </h5>
             <div className={s.img}>
-                {/*<img src={props.img} alt="news"/>*/}
-                <img src={image} alt="news"/>
+                <img src={props.img} alt="news"/>
             </div>
             <div className={s.time}>
                 {props.created_at}
