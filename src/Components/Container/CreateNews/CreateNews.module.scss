@@ -1,0 +1,73 @@
+@import "../../../../src/Common/style";
+
+.create {
+    padding: 40px 50px;
+    border-radius: 2px;
+    background-color: #d8d8d8;
+}
+
+.title {
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 40px;
+}
+
+.section {
+    margin-bottom: 30px;
+}
+
+.label {
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 15px;
+}
+
+.select {
+    height: 41px;
+    background-color: transparent;
+    outline: none;
+    width: 150px;
+    padding-left: 5px;
+}
+
+.footer {
+    @include flexible();
+    justify-content: space-between;
+}
+
+.inputFile {
+    width: 0;
+    height: 0;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    //z-index: -1;
+}
+
+.inputFile + label {
+    width: 244px;
+    font-size: 14px;
+    font-weight: 500;
+    border: 1px solid #000;
+    background-color: transparent;
+    cursor: pointer;
+    display: block;
+    overflow: hidden;
+    padding: 13px 0;
+    border-radius: 2px;
+    text-align: center;
+}
+
+.submitBtn {
+    cursor: pointer;
+    width: 244px;
+    outline: none;
+    border: none;
+    border-radius: 2px;
+    padding: 15px 45px;
+    background-color: #646464;
+    font-size: 14px;
+    font-weight: 500;
+    color: white;
+}
