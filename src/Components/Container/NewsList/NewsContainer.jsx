@@ -3,8 +3,8 @@ import {compose} from "redux";
 import NewsList from "./NewsList";
 import {withRouter} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
-import {getNewsCategory, getRecentNews} from "../../redux/news-reducer";
-import {getCurrentSection} from "../../Common/getCurrentSection";
+import {getNewsCategory, getRecentNews} from "../../../redux/news-reducer";
+import {getCurrentSection} from "../../../Common/getCurrentSection";
 
 const NewsListContainer = (props) => {
 

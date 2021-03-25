@@ -36,3 +36,11 @@ export const newsApi = {
     },
 
 }
+export const authApi = {
+
+    login(username, password) { //Логин
+        let data = getFormData([{name: 'username', value: username}, {name: 'password', value: password}])
+        return axios.post(baseUrl + `auth/jwt/create/`, data)
+    },
+
+}

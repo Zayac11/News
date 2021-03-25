@@ -1,11 +1,11 @@
 import React from 'react'
 import {compose} from "redux";
 import s from './NewsList.module.scss'
-import {withRequestFetching} from "../../hoc/withRequestFetching";
+import {withRequestFetching} from "../../../hoc/withRequestFetching";
 import NewsItemLarge from "./NewsItemLarge/NewsItemLarge";
 import NewsItemSmall from "./NewsItemSmall/NewsItemSmall";
-import Paginator from "../../Common/Paginator/Paginator";
-import SwitchNews from "../../Common/Switch/Switch";
+import Paginator from "../../../Common/Paginator/Paginator";
+import SwitchNews from "../../../Common/Switch/Switch";
 
 //Общая компонента с выводом карточек новостей
 const NewsList = (props) => {

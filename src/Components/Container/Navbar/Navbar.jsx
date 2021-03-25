@@ -12,9 +12,9 @@ const Navbar = (props) => {
                         News Agency
                     </NavLink>
                     <div className={s.info}>
-                        <div className={s.section}>
-                            {props.section}
-                        </div>
+                        {/*<div className={s.section}>*/}
+                        {/*    {props.section}*/}
+                        {/*</div>*/}
                         <div className={s.searchContainer}>
                             <div className={s.inputContainer}>
                                 <input type="text" onKeyUp={props.handleKeyUp} value={props.letters} onChange={ (e) => props.handleChangeLetters(e.target.value)} placeholder={'Поиск'} className={s.input}/>

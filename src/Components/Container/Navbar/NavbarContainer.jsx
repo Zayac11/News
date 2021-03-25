@@ -3,8 +3,8 @@ import {compose} from "redux";
 import Navbar from "./Navbar";
 import {withRouter} from "react-router-dom";
 import {useDispatch} from "react-redux";
-import {getRecentNews} from "../../redux/news-reducer";
-import {getCurrentSection} from "../../Common/getCurrentSection";
+import {getRecentNews} from "../../../redux/news-reducer";
+import {getCurrentSection} from "../../../Common/getCurrentSection";
 
 const NavbarContainer = (props) => {
 

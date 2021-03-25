@@ -1,0 +1,39 @@
+@import "../../../src/Common/style";
+
+.login {
+    border-radius: 2px;
+    background-color: #d8d8d8;
+    width: 440px;
+    height: 400px;
+    margin: 15vh auto 0;
+    padding: 88px 80px;
+}
+
+.section {
+    margin-bottom: 35px;
+    position: relative;
+}
+
+.label {
+    font-size: 12px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.submitBtn {
+    cursor: pointer;
+    outline: none;
+    border: none;
+    padding: 14px 64px;
+    border-radius: 23.5px;
+    background-color: #595959;
+    display: block;
+    margin: 50px auto 0;
+    font-size: 14px;
+    color: white;
+    transition: all 0.4s ease;
+}
+
+.submitBtn:hover {
+    background-color: #191919;
+}
