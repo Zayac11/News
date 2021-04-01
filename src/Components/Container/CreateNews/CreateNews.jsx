@@ -92,7 +92,11 @@ const CreateNews = (props) => {
                                     />
                                     <ErrorMessage name="img" component={TextError} />
                                 </div>
-                                <button className={s.submitBtn} type="submit" disabled={isSubmitting}>Создать</button>
+                                {
+                                    props.isUpdate
+                                    ? <button className={s.submitBtn} type="submit" disabled={isSubmitting}>Обновить</button>
+                                    : <button className={s.submitBtn} type="submit" disabled={isSubmitting}>Создать</button>
+                                }
                             </div>
                         </Form>
                     )

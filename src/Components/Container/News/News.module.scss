@@ -21,3 +21,16 @@
     font-size: 14px;
 }
 
+.updateBtn {
+    margin-top: 30px;
+    width: max-content;
+    display: block;
+    color: black;
+    padding: 10px 40px;
+    border: 1px solid black;
+    transition: all 0.4s ease;
+}
+.updateBtn:hover {
+    color: white;
+    background-color: #595959;
+}

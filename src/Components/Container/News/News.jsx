@@ -3,6 +3,7 @@ import {compose} from "redux";
 import {withRequestFetching} from "../../../hoc/withRequestFetching";
 import {Editor} from "react-draft-wysiwyg";
 import s from './News.module.scss'
+import {NavLink} from "react-router-dom";
 
 const News = ({newsData, ...props}) => {
     return (
@@ -19,6 +20,12 @@ const News = ({newsData, ...props}) => {
                 onContentStateChange={props.setContentState}
                 onEditorStateChange={props.setEditorState}
             />
+
+            <div className={s.footer}>
+                <NavLink className={s.updateBtn} to={`/create_news/${newsData.id}`}>
+                    Редактировать
+                </NavLink>
+            </div>
         </div>
     )
 }
