@@ -2,3 +2,10 @@
     display: flex;
     align-items: center;
 }
+
+@mixin defaultButton() {
+    background-color: transparent;
+    outline: none;
+    cursor: pointer;
+    border: none;
+}

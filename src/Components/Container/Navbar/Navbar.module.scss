@@ -37,12 +37,18 @@
 .createBtn {
     cursor: pointer;
     display: block;
-    padding: 15px 42px;
+    padding: 13px 42px;
     border-radius: 2px;
     background-color: #646464;
     font-size: 14px;
     font-weight: 500;
     color: white;
+}
+
+.logoutBtn {
+    @include defaultButton();
+    text-decoration: underline;
+    margin-right: 40px;
 }
 
 .info {

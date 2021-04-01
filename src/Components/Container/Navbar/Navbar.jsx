@@ -27,6 +27,11 @@ const Navbar = (props) => {
                             </NavLink>
                         }
                         <div className={s.searchContainer}>
+                            {
+                                props.isAuth &&
+                                <button onClick={() => {props.handleLogout()}} className={s.logoutBtn}>Выйти</button>
+                            }
+
                             <div className={s.inputContainer}>
                                 <input type="text" onKeyUp={props.handleKeyUp} value={props.letters} onChange={ (e) => props.handleChangeLetters(e.target.value)} placeholder={'Поиск'} className={s.input}/>
                             </div>

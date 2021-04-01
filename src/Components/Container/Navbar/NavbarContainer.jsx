@@ -4,6 +4,7 @@ import Navbar from "./Navbar";
 import {withRouter} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {getRecentNews} from "../../../redux/news-reducer";
+import {logout} from "../../../redux/auth-reducer";
 import {getCurrentSection} from "../../../Common/getCurrentSection";
 
 const NavbarContainer = (props) => {
@@ -20,6 +21,10 @@ const NavbarContainer = (props) => {
         }
     }
 
+    const handleLogout = (e) => {
+        dispatch(logout())
+    }
+
     const handleSubmit = () => {
         dispatch(getRecentNews(letters, 1))
     }
@@ -29,7 +34,7 @@ const NavbarContainer = (props) => {
     }, [props.section]);
 
     return (
-        <Navbar isAuth={isAuth} letters={letters} section={currentSection} handleKeyUp={handleKeyUp} handleChangeLetters={handleChangeLetters} time={time} match={props.match} />
+        <Navbar handleLogout={handleLogout} isAuth={isAuth} letters={letters} section={currentSection} handleKeyUp={handleKeyUp} handleChangeLetters={handleChangeLetters} time={time} match={props.match} />
     )
 }
 
