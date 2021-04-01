@@ -1,10 +1,11 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import { EditorState, convertFromRaw } from 'draft-js';
 import CreateNewsForm from "./CreateNewsForm";
 import {compose} from "redux";
 import {withAuthRedirect} from "../../../hoc/withAuthRedirect";
-import {useDispatch} from "react-redux";
-import {createNews} from "../../../redux/news-reducer";
+import {useDispatch, useSelector} from "react-redux";
+import {createNews, setIsNewsCreated} from "../../../redux/news-reducer";
+import {Redirect} from "react-router-dom";
 
 const CreateNewsContainer = (props) => {
     const dispatch = useDispatch()
@@ -31,14 +32,26 @@ const CreateNewsContainer = (props) => {
         ]
     };
 
+    const isNewsCreated = useSelector(state => state.news.isNewsCreated);
     const [contentState, setContentState] = useState(content)
     const [editorState, setEditorState] = useState( EditorState.createWithContent(convertFromRaw(content)))
+
+    //ComponentWillUnmount function
+    useEffect(() => {
+        return function cleanup() {
+            dispatch(setIsNewsCreated(false))
+        };
+    });
 
     const onSubmit = (values, actions) => {
         console.log(values)
         console.log(contentState)
         console.log(editorState)
         dispatch(createNews(values.name, values.img, values.description, contentState, values.section, actions.setSubmitting))
+    }
+
+    if(isNewsCreated) {
+        return <Redirect to={'/'} />
     }
 
     return (

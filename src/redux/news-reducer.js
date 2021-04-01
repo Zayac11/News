@@ -2,6 +2,7 @@ import {newsApi} from "../api/api";
 import {toggleIsFetching} from "./auth-reducer";
 
 const SET_NEWS = 'SET_NEWS'
+const SET_IS_NEWS_CREATED = 'SET_IS_NEWS_CREATED'
 const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE'
 const SET_NEWS_DATA = 'SET_NEWS_DATA'
 
@@ -11,6 +12,7 @@ let initialState = {
     pageSize: 3, //Сколько карточек выводится на странице, пока стоит единица
     currentPage: 1, //Номер текущей страницы
     newsData: {},
+    isNewsCreated: false, //Создана/обновлена ли новость
 }
 
 const newsReducer = (state = initialState, action) => {
@@ -25,6 +27,11 @@ const newsReducer = (state = initialState, action) => {
             return {
                 ...state,
                 currentPage: action.currentPage,
+            }
+        case SET_IS_NEWS_CREATED:
+            return {
+                ...state,
+                isNewsCreated: action.isNewsCreated,
             }
         case SET_NEWS_DATA:
             return {
@@ -46,6 +53,7 @@ const newsReducer = (state = initialState, action) => {
 export const setNews = (news) => ({type: SET_NEWS, news})
 export const setCurrentNews = (newsData) => ({type: SET_NEWS_DATA, newsData})
 export const setCurrentPage = (currentPage) => ({type: SET_CURRENT_PAGE, currentPage})
+export const setIsNewsCreated = (isNewsCreated) => ({type: SET_IS_NEWS_CREATED, isNewsCreated})
 
 export const getRecentNews = (letters, pageNumber) => { //Получение списка последних новостей
     return async (dispatch) => {
@@ -114,7 +122,8 @@ export const createNews = (title, img, short_description, content, category, set
             let response = await newsApi.createNews(title, img, short_description, content, category)
             console.log('createNews', response)
             if(response.status === 200) {
-                dispatch(setCurrentNews(response.data))
+                // dispatch(setCurrentNews(response.data))
+                dispatch(setIsNewsCreated(true))
             }
             dispatch(toggleIsFetching(false))
         }
@@ -134,6 +143,7 @@ export const updateNews = (newsId, title, img, short_description, content, categ
             console.log('updateNews', response)
             if(response.status === 200) {
                 // dispatch(setCurrentNews(response.data))
+                dispatch(setIsNewsCreated(true))
             }
             dispatch(toggleIsFetching(false))
         }
