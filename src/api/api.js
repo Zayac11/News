@@ -61,7 +61,6 @@ export const newsApi = {
     },
 
     updateNews(newsId, title, img, short_description, content, category) { //Изменение новости
-
         let data = getFormData([{name: 'title', value: title}, {name: 'img', value: img}, {name: 'short_description', value: short_description},
             {name: 'content', value: JSON.stringify(content)}, {name: 'category', value: category}, {name: 'message_pk', value: newsId}])
         const accessToken = 'Bearer ' + localStorage.getItem('accessToken')
