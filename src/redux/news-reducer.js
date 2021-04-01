@@ -6,7 +6,6 @@ const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE'
 const SET_NEWS_DATA = 'SET_NEWS_DATA'
 
 let initialState = {
-    isFetch: false,
     newsCards: [], //Список новостей
     count: 0, //Общее число новостей
     pageSize: 3, //Сколько карточек выводится на странице, пока стоит единица
@@ -36,7 +35,7 @@ const newsReducer = (state = initialState, action) => {
                     title: action.newsData.title,
                     short_description: action.newsData.short_description,
                     img: action.newsData.img,
-                    category: action.newsData.title,
+                    category: action.newsData.category,
                 },
             }
         default:
@@ -80,9 +79,9 @@ export const getCurrentNews = (newsId) => { //Получение новости
             dispatch(toggleIsFetching(false))
         }
         catch (error) {
-            // console.log('getCurrentNews Error', error.toJSON())
-            // window.alert('getCurrentNews Error')
-            // dispatch(toggleIsFetching(false))
+            console.log('getCurrentNews Error', error.toJSON())
+            window.alert('getCurrentNews Error')
+            dispatch(toggleIsFetching(false))
         }
     }
 }
@@ -109,21 +108,21 @@ export const getNewsCategory = (category, pageNumber) => { //Получение 
 
 export const createNews = (title, img, short_description, content, category, setSubmitting) => { //Создание новости
     return async (dispatch) => {
+
         dispatch(toggleIsFetching(true))
         try {
             let response = await newsApi.createNews(title, img, short_description, content, category)
             console.log('createNews', response)
             if(response.status === 200) {
-                debugger
                 dispatch(setCurrentNews(response.data))
             }
             dispatch(toggleIsFetching(false))
         }
         catch (error) {
-            // console.log('createNews', error.toJSON())
-            // window.alert('createNews Error')
-            // setSubmitting(false)
-            // dispatch(toggleIsFetching(false))
+            console.log('createNews', error.toJSON())
+            window.alert('createNews Error')
+            setSubmitting(false)
+            dispatch(toggleIsFetching(false))
         }
     }
 }

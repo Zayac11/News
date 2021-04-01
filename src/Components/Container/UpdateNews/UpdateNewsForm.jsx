@@ -3,6 +3,7 @@ import {compose} from "redux";
 import * as Yup from "yup";
 import CreateNews from "../CreateNews/CreateNews";
 import {withRequestFetching} from "../../../hoc/withRequestFetching";
+import {convertFromRaw, EditorState} from "draft-js";
 
 const UpdateNewsForm = ({newsData, ...props}) => {
 
@@ -13,13 +14,10 @@ const UpdateNewsForm = ({newsData, ...props}) => {
         section: newsData.category, // Раздел статьи
     }
 
-    // const newsData = useSelector(state => state.news.newsData);
-    // useEffect(() => {
-    //    initialValues.name = newsData.title
-    //    initialValues.description = newsData.short_description
-    //    initialValues.img = newsData.img
-    //    initialValues.section = newsData.category
-    // }, [newsData.title, newsData.short_description, newsData.img, newsData.category]); // Перезапускать эффект только если count поменялся
+    useEffect(() => {
+        props.setContentState(newsData.content)
+        props.setEditorState(EditorState.createWithContent(convertFromRaw(newsData.content)))
+    }, [newsData.content]); // Перезапускать эффект только если count поменялся
 
     let validationSchema = Yup.object({
         name: Yup.string()
