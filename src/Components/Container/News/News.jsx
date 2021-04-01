@@ -21,11 +21,14 @@ const News = ({newsData, ...props}) => {
                 onEditorStateChange={props.setEditorState}
             />
 
-            <div className={s.footer}>
-                <NavLink className={s.updateBtn} to={`/create_news/${newsData.id}`}>
-                    Редактировать
-                </NavLink>
-            </div>
+            {
+                props.isAuth &&
+                <div className={s.footer}>
+                    <NavLink className={s.updateBtn} to={`/create_news/${newsData.id}`}>
+                        Редактировать
+                    </NavLink>
+                </div>
+            }
         </div>
     )
 }
