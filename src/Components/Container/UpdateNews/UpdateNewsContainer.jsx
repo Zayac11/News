@@ -4,8 +4,9 @@ import {useDispatch, useSelector} from "react-redux";
 import {compose} from "redux";
 import {Redirect, withRouter} from "react-router-dom";
 import {withAuthRedirect} from "../../../hoc/withAuthRedirect";
-import {getCurrentNews, setIsNewsCreated, updateNews} from "../../../redux/news-reducer";
+import {getCurrentNews, setIsNewsCreated, setIsNewsDeleted, updateNews} from "../../../redux/news-reducer";
 import Preloader from "../../../Common/Preloader/Preloader";
+import {toast} from "react-toastify";
 
 const UpdateNewsContainer = (props) => {
 
@@ -13,8 +14,11 @@ const UpdateNewsContainer = (props) => {
     let newsId = props.match.params.newsId
     const newsData = useSelector(state => state.news.newsData);
     const isNewsCreated = useSelector(state => state.news.isNewsCreated);
+    const isNewsDeleted = useSelector(state => state.news.isNewsDeleted);
     const [contentState, setContentState] = useState('')
     const [editorState, setEditorState] = useState('')
+    const notifyDelete = () => toast.error("Новость успешно удалена");
+    const notifyUpdate = () => toast.success("Новость успешно изменена");
 
     useEffect(() => {
         dispatch(getCurrentNews(props.match.params.newsId))
@@ -24,8 +28,18 @@ const UpdateNewsContainer = (props) => {
     useEffect(() => {
        return function cleanup() {
             dispatch(setIsNewsCreated(false))
+            dispatch(setIsNewsDeleted(false))
         };
     });
+    useEffect(() => {
+        if(isNewsCreated) {
+            notifyUpdate()
+        }
+        if(isNewsDeleted) {
+            notifyDelete()
+        }
+
+    }, [isNewsCreated, isNewsDeleted]);
 
     if(!newsData.content) {
         return <Preloader />
@@ -37,7 +51,7 @@ const UpdateNewsContainer = (props) => {
         dispatch(updateNews(newsId, values.name, values.img, values.description, contentState, values.section, actions.setSubmitting))
     }
 
-    if(isNewsCreated) {
+    if(isNewsCreated || isNewsDeleted) {
         return <Redirect to={'/'} />
     }
 

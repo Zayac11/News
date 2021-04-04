@@ -6,6 +6,7 @@ import Preloader from "./Common/Preloader/Preloader";
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
 import {initializing} from "./redux/auth-reducer";
+import {ToastContainer} from "react-toastify";
 
 function App() {
 
@@ -26,6 +27,17 @@ function App() {
                 <Route exact path='/login' render={ () => <LoginContainer />} />
                 <Container />
             </Switch>
+            <ToastContainer
+                position="top-right"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+            />
         </>
     );
 }

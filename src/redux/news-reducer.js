@@ -3,6 +3,7 @@ import {toggleIsFetching} from "./auth-reducer";
 
 const SET_NEWS = 'SET_NEWS'
 const SET_IS_NEWS_CREATED = 'SET_IS_NEWS_CREATED'
+const SET_IS_NEWS_DELETED = 'SET_IS_NEWS_DELETED'
 const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE'
 const SET_NEWS_DATA = 'SET_NEWS_DATA'
 
@@ -13,6 +14,7 @@ let initialState = {
     currentPage: 1, //Номер текущей страницы
     newsData: {},
     isNewsCreated: false, //Создана/обновлена ли новость
+    isNewsDeleted: false, //Уделанеа ли новость
 }
 
 const newsReducer = (state = initialState, action) => {
@@ -32,6 +34,11 @@ const newsReducer = (state = initialState, action) => {
             return {
                 ...state,
                 isNewsCreated: action.isNewsCreated,
+            }
+        case SET_IS_NEWS_DELETED:
+            return {
+                ...state,
+                isNewsDeleted: action.isNewsDeleted,
             }
         case SET_NEWS_DATA:
             return {
@@ -54,6 +61,7 @@ export const setNews = (news) => ({type: SET_NEWS, news})
 export const setCurrentNews = (newsData) => ({type: SET_NEWS_DATA, newsData})
 export const setCurrentPage = (currentPage) => ({type: SET_CURRENT_PAGE, currentPage})
 export const setIsNewsCreated = (isNewsCreated) => ({type: SET_IS_NEWS_CREATED, isNewsCreated})
+export const setIsNewsDeleted = (isNewsDeleted) => ({type: SET_IS_NEWS_CREATED, isNewsDeleted})
 
 export const getRecentNews = (letters, pageNumber) => { //Получение списка последних новостей
     return async (dispatch) => {
@@ -163,7 +171,7 @@ export const deleteNews = (newsId, setSubmitting) => { //Удаление нов
             console.log('deleteNews', response)
             if(response.status === 200) {
                 debugger
-                // dispatch(setCurrentNews(response.data))
+                // dispatch(setIsNewsDeleted(true))
             }
             dispatch(toggleIsFetching(false))
         }

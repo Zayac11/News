@@ -6,6 +6,7 @@ import {withAuthRedirect} from "../../../hoc/withAuthRedirect";
 import {useDispatch, useSelector} from "react-redux";
 import {createNews, setIsNewsCreated} from "../../../redux/news-reducer";
 import {Redirect} from "react-router-dom";
+import {toast} from "react-toastify";
 
 const CreateNewsContainer = (props) => {
     const dispatch = useDispatch()
@@ -35,6 +36,7 @@ const CreateNewsContainer = (props) => {
     const isNewsCreated = useSelector(state => state.news.isNewsCreated);
     const [contentState, setContentState] = useState(content)
     const [editorState, setEditorState] = useState( EditorState.createWithContent(convertFromRaw(content)))
+    const notify = () => toast.success("Новость успешно создана");
 
     //ComponentWillUnmount function
     useEffect(() => {
@@ -42,6 +44,12 @@ const CreateNewsContainer = (props) => {
             dispatch(setIsNewsCreated(false))
         };
     });
+    useEffect(() => {
+        if(isNewsCreated) {
+            notify()
+        }
+
+    }, [isNewsCreated]);
 
     const onSubmit = (values, actions) => {
         console.log(values)
