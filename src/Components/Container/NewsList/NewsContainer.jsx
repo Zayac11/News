@@ -15,6 +15,7 @@ const NewsListContainer = (props) => {
     const count = useSelector(state => state.news.count);
     const pageSize = useSelector(state => state.news.pageSize);
     const currentPage = useSelector(state => state.news.currentPage);
+    const isFetch = useSelector(state => state.auth.isFetch);
 
     useEffect(() => {
         props.setSection(props.match.params.section ? props.match.params.section  : 'Главная')
@@ -40,8 +41,28 @@ const NewsListContainer = (props) => {
         localStorage.setItem('checked', checked);
     }
 
+    const animationContainer = {
+        hidden: {opacity: 1, scale: 1},
+        visible: {
+            opacity: 1,
+            scale: 1,
+            transition: {
+                delayChildren: 0.1,
+                staggerChildren: 0.1
+            }
+        }
+    }
+    const animationItem = {
+        hidden: {x: -100, y: 20, opacity: 0},
+        visible: {
+            x: 0,
+            y: 0,
+            opacity: 1
+        }
+    }
+
     return (
-        <NewsList title={'Новости'} count={count} pageSize={pageSize} currentPage={currentPage}
+        <NewsList animationContainer={animationContainer} isFetch={isFetch} animationItem={animationItem} title={'Новости'} count={count} pageSize={pageSize} currentPage={currentPage}
                   checked={checked} handleCheck={handleCheck}
                   onPageChanged={onPageChanged} newsCards={newsCards} />
     )
