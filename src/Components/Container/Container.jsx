@@ -5,7 +5,7 @@ import s from './Container.module.scss'
 import InfoSidebarContainer from "./InfoSidebar/InfoSidebarContainer";
 import SectionSidebar from "./SectionsSidebar/SectionSidebar";
 import NavbarContainer from "./Navbar/NavbarContainer";
-import NewsListContainer from "./NewsList/NewsContainer";
+import NewsListContainer from "./NewsList/NewsListContainer";
 import CreateNewsContainer from "./CreateNews/CreateNewsContainer";
 import UpdateNewsContainer from "./UpdateNews/UpdateNewsContainer";
 import NewsContainer from "./News/NewsContainer";

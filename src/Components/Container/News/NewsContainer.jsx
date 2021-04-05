@@ -4,7 +4,7 @@ import {withRouter} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {getCurrentNews} from "../../../redux/news-reducer";
 import NewsForm from "./NewsForm";
-import Preloader from "../../../Common/Preloader/Preloader";
+import {MainContentLoaderNews} from "../../../Common/ContentLoader/ContendLoader";
 
 const NewsContainer = (props) => {
 
@@ -16,10 +16,24 @@ const NewsContainer = (props) => {
         dispatch(getCurrentNews(props.match.params.newsId))
     }, [dispatch, props.match.params.newsId]);
     if(!newsData.content) {
-        return <Preloader />
+        return <MainContentLoaderNews />
     }
+
+    const animations = {
+        hidden: {
+            opacity: 0,
+            x: -100,
+            y: 0
+        },
+        visible: {
+            opacity: 1,
+            x: 0,
+            y: 0
+        }
+    }
+
     return (
-        <NewsForm isAuth={isAuth} newsData={newsData} />
+        <NewsForm animations={animations} isAuth={isAuth} newsData={newsData} />
     )
 }
 

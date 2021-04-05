@@ -19,6 +19,5 @@ const NewsForm = (props) => {
 
 export default compose(
     withRouter,
-    withRequestFetching,
 )(NewsForm)
 
