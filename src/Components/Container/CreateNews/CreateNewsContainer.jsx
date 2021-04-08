@@ -40,10 +40,10 @@ const CreateNewsContainer = (props) => {
 
     //ComponentWillUnmount function
     useEffect(() => {
-        return function cleanup() {
+        return () => {
             dispatch(setIsNewsCreated(false))
         };
-    });
+    }, [dispatch]);
     useEffect(() => {
         if(isNewsCreated) {
             notify()

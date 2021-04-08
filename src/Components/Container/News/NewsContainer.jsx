@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react'
 import {compose} from "redux";
 import {withRouter} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
-import {getCurrentNews} from "../../../redux/news-reducer";
+import {getCurrentNews, deleteNewsData} from "../../../redux/news-reducer";
 import NewsForm from "./NewsForm";
 import {MainContentLoaderNews} from "../../../Common/ContentLoader/ContendLoader";
 
@@ -11,10 +11,19 @@ const NewsContainer = (props) => {
     const dispatch = useDispatch()
     const isAuth = useSelector(state => state.auth.isAuth);
     const newsData = useSelector(state => state.news.newsData);
+    const [isModalOpen, setIsModalOpen] = React.useState(false);
+
 
     useEffect(() => {
         dispatch(getCurrentNews(props.match.params.newsId))
     }, [dispatch, props.match.params.newsId]);
+
+    useEffect(() => {
+        return () => {
+            dispatch(deleteNewsData())
+            // dispatch(setIsNewsDeleted(false))
+        };
+    }, [dispatch]);
     if(!newsData.content) {
         return <MainContentLoaderNews />
     }
@@ -33,7 +42,7 @@ const NewsContainer = (props) => {
     }
 
     return (
-        <NewsForm animations={animations} isAuth={isAuth} newsData={newsData} />
+        <NewsForm animations={animations} isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} isAuth={isAuth} newsData={newsData} />
     )
 }
 

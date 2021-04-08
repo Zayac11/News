@@ -1,7 +1,6 @@
 import React from 'react'
 import {compose} from "redux";
 import s from './NewsList.module.scss'
-import {withRequestFetching} from "../../../hoc/withRequestFetching";
 import NewsItemLarge from "./NewsItemLarge/NewsItemLarge";
 import NewsItemSmall from "./NewsItemSmall/NewsItemSmall";
 import Paginator from "../../../Common/Paginator/Paginator";
@@ -77,5 +76,4 @@ const NewsList = (props) => {
 }
 
 export default compose(
-    // withRequestFetching
 )(NewsList)

@@ -4,6 +4,7 @@ import {toggleIsFetching} from "./auth-reducer";
 const SET_NEWS = 'SET_NEWS'
 const SET_IS_NEWS_CREATED = 'SET_IS_NEWS_CREATED'
 const SET_IS_NEWS_DELETED = 'SET_IS_NEWS_DELETED'
+const DETELE_NEWS_DATA = 'DETELE_NEWS_DATA'
 const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE'
 const SET_NEWS_DATA = 'SET_NEWS_DATA'
 
@@ -52,6 +53,10 @@ const newsReducer = (state = initialState, action) => {
                     category: action.newsData.category,
                 },
             }
+        case DETELE_NEWS_DATA:
+            return {
+                newsData: {},
+            }
         default:
             return state;
     }
@@ -62,6 +67,7 @@ export const setCurrentNews = (newsData) => ({type: SET_NEWS_DATA, newsData})
 export const setCurrentPage = (currentPage) => ({type: SET_CURRENT_PAGE, currentPage})
 export const setIsNewsCreated = (isNewsCreated) => ({type: SET_IS_NEWS_CREATED, isNewsCreated})
 export const setIsNewsDeleted = (isNewsDeleted) => ({type: SET_IS_NEWS_CREATED, isNewsDeleted})
+export const deleteNewsData = () => ({type: DETELE_NEWS_DATA})
 
 export const getRecentNews = (letters, pageNumber) => { //Получение списка последних новостей
     return async (dispatch) => {

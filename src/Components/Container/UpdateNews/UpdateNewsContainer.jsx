@@ -4,7 +4,13 @@ import {useDispatch, useSelector} from "react-redux";
 import {compose} from "redux";
 import {Redirect, withRouter} from "react-router-dom";
 import {withAuthRedirect} from "../../../hoc/withAuthRedirect";
-import {getCurrentNews, setIsNewsCreated, setIsNewsDeleted, updateNews} from "../../../redux/news-reducer";
+import {
+    deleteNewsData,
+    getCurrentNews,
+    setIsNewsCreated,
+    setIsNewsDeleted,
+    updateNews
+} from "../../../redux/news-reducer";
 import Preloader from "../../../Common/Preloader/Preloader";
 import {toast} from "react-toastify";
 
@@ -26,11 +32,12 @@ const UpdateNewsContainer = (props) => {
 
     //ComponentWillUnmount function
     useEffect(() => {
-       return function cleanup() {
-            dispatch(setIsNewsCreated(false))
-            dispatch(setIsNewsDeleted(false))
+       return () => {
+           dispatch(setIsNewsCreated(false))
+           dispatch(setIsNewsDeleted(false))
+           dispatch(deleteNewsData())
         };
-    });
+    }, [dispatch]);
     useEffect(() => {
         if(isNewsCreated) {
             notifyUpdate()
