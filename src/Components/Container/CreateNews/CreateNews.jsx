@@ -48,7 +48,7 @@ const CreateNews = (props) => {
                                 onEditorStateChange={props.setEditorState}
                             />
 
-                            <div className={s.section}>
+                            <div className={`${s.section} ${s.top}`}>
                                 <label className={s.label}  htmlFor="section">Выберите раздел</label>
                                 <Field
                                     className={s.select}

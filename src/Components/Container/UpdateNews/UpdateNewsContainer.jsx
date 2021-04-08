@@ -8,7 +8,6 @@ import {
     deleteNewsData,
     getCurrentNews,
     setIsNewsCreated,
-    setIsNewsDeleted,
     updateNews
 } from "../../../redux/news-reducer";
 import Preloader from "../../../Common/Preloader/Preloader";
@@ -20,10 +19,8 @@ const UpdateNewsContainer = (props) => {
     let newsId = props.match.params.newsId
     const newsData = useSelector(state => state.news.newsData);
     const isNewsCreated = useSelector(state => state.news.isNewsCreated);
-    const isNewsDeleted = useSelector(state => state.news.isNewsDeleted);
     const [contentState, setContentState] = useState('')
     const [editorState, setEditorState] = useState('')
-    const notifyDelete = () => toast.error("Новость успешно удалена");
     const notifyUpdate = () => toast.success("Новость успешно изменена");
 
     useEffect(() => {
@@ -34,7 +31,6 @@ const UpdateNewsContainer = (props) => {
     useEffect(() => {
        return () => {
            dispatch(setIsNewsCreated(false))
-           dispatch(setIsNewsDeleted(false))
            dispatch(deleteNewsData())
         };
     }, [dispatch]);
@@ -42,11 +38,7 @@ const UpdateNewsContainer = (props) => {
         if(isNewsCreated) {
             notifyUpdate()
         }
-        if(isNewsDeleted) {
-            notifyDelete()
-        }
-
-    }, [isNewsCreated, isNewsDeleted]);
+    }, [isNewsCreated]);
 
     if(!newsData.content) {
         return <Preloader />
@@ -58,7 +50,7 @@ const UpdateNewsContainer = (props) => {
         dispatch(updateNews(newsId, values.name, values.img, values.description, contentState, values.section, actions.setSubmitting))
     }
 
-    if(isNewsCreated || isNewsDeleted) {
+    if(isNewsCreated) {
         return <Redirect to={'/'} />
     }
 

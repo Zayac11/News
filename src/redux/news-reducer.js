@@ -66,7 +66,7 @@ export const setNews = (news) => ({type: SET_NEWS, news})
 export const setCurrentNews = (newsData) => ({type: SET_NEWS_DATA, newsData})
 export const setCurrentPage = (currentPage) => ({type: SET_CURRENT_PAGE, currentPage})
 export const setIsNewsCreated = (isNewsCreated) => ({type: SET_IS_NEWS_CREATED, isNewsCreated})
-export const setIsNewsDeleted = (isNewsDeleted) => ({type: SET_IS_NEWS_CREATED, isNewsDeleted})
+export const setIsNewsDeleted = (isNewsDeleted) => ({type: SET_IS_NEWS_DELETED, isNewsDeleted})
 export const deleteNewsData = () => ({type: DETELE_NEWS_DATA})
 
 export const getRecentNews = (letters, pageNumber) => { //Получение списка последних новостей
@@ -95,7 +95,7 @@ export const getCurrentNews = (newsId) => { //Получение новости
         try {
             let response = await newsApi.getCurrentNews(newsId)
             console.log('getCurrentNews', response)
-            if(response.status === 200) {
+            if(response.status === 200 && response.data.status === 200) {
                 dispatch(setCurrentNews(response.data.data))
             }
             dispatch(toggleIsFetching(false))
@@ -169,22 +169,20 @@ export const updateNews = (newsId, title, img, short_description, content, categ
         }
     }
 }
-export const deleteNews = (newsId, setSubmitting) => { //Удаление новости
+export const deleteNews = (newsId) => { //Удаление новости
     return async (dispatch) => {
         dispatch(toggleIsFetching(true))
         try {
             let response = await newsApi.deleteNews(newsId)
             console.log('deleteNews', response)
-            if(response.status === 200) {
-                debugger
-                // dispatch(setIsNewsDeleted(true))
+            if(response.status === 200 && response.data === true) {
+                dispatch(setIsNewsDeleted(true))
             }
             dispatch(toggleIsFetching(false))
         }
         catch (error) {
             console.log('deleteNews', error.toJSON())
             window.alert('deleteNews Error')
-            setSubmitting(false)
             dispatch(toggleIsFetching(false))
         }
     }

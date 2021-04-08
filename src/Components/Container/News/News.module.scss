@@ -8,7 +8,7 @@
 
 .top {
     @include flexible();
-    margin-bottom: 30px;
+    margin-bottom: 10px;
     justify-content: space-between;
     align-items: center;
 }
@@ -25,9 +25,31 @@
     text-align: right;
 }
 
-.updateBtn {
+.footer {
+    @include flexible();
+    justify-content: space-between;
     margin-top: 30px;
-    width: max-content;
+}
+
+.deleteBtn {
+    width: 200px;
+    display: block;
+    outline: none;
+    border: 1px solid $delete-color;
+    color: red;
+    background-color: transparent;
+    padding: 10px 40px;
+    transition: all 0.4s ease;
+    font-size: 16px;
+    cursor: pointer;
+}
+.deleteBtn:hover {
+    background-color: $delete-color;
+    color: white;
+}
+
+.updateBtn {
+    width: 200px;
     display: block;
     color: black;
     padding: 10px 40px;

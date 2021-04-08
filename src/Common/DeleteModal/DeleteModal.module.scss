@@ -1,0 +1,29 @@
+@import "../../../src/Common/style";
+
+.modal {
+    margin: 0 auto;
+    width: 500px;
+    text-align: center;
+}
+
+.title {
+    margin-bottom: 30px;
+}
+
+.deleteBtn {
+    width: 200px;
+    display: block;
+    outline: none;
+    border: 1px solid $delete-color;
+    color: red;
+    background-color: transparent;
+    padding: 10px 40px;
+    transition: all 0.4s ease;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 0 auto;
+}
+.deleteBtn:hover {
+    background-color: $delete-color;
+    color: white;
+}

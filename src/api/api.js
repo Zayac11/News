@@ -47,11 +47,9 @@ export const newsApi = {
     },
 
     createNews(title, img, short_description, content, category) { //Создание новости
-
         let data = getFormData([{name: 'title', value: title}, {name: 'img', value: img}, {name: 'short_description', value: short_description},
             {name: 'content', value: JSON.stringify(content)}, {name: 'category', value: category}])
         const accessToken = 'Bearer ' + localStorage.getItem('accessToken')
-
         return axios.post(baseUrl +`api/add_or_change_message`, data,
             {
                 headers: {
@@ -73,9 +71,17 @@ export const newsApi = {
         )
     },
 
-    deleteNews(newsId) { //Создание новости
-        let data = getFormData([{name: 'newsId', value: newsId}])
-        return axios.delete(baseUrl +`api/add_or_change_message`, data)
+    deleteNews(newsId) { //Удаление новости
+        let data = getFormData([{name: 'message_pk', value: newsId}])
+        const accessToken = 'Bearer ' + localStorage.getItem('accessToken')
+        return axios.delete(baseUrl +`api/add_or_change_message`,
+            {
+                headers: {
+                    'Authorization': `${accessToken}`
+                },
+                data
+            }
+        )
     },
 
 }
