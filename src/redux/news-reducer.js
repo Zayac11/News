@@ -1,5 +1,6 @@
 import {newsApi} from "../api/api";
 import {toggleIsFetching} from "./auth-reducer";
+import {getPopularAndPinnedNews} from "./info-sidebar-reducer";
 
 const SET_NEWS = 'SET_NEWS'
 const SET_IS_NEWS_CREATED = 'SET_IS_NEWS_CREATED'
@@ -136,7 +137,7 @@ export const createNews = (title, img, short_description, content, category, set
             let response = await newsApi.createNews(title, img, short_description, content, category)
             console.log('createNews', response)
             if(response.status === 200) {
-                // dispatch(setCurrentNews(response.data))
+                dispatch(getPopularAndPinnedNews())
                 dispatch(setIsNewsCreated(true))
             }
             dispatch(toggleIsFetching(false))
@@ -156,7 +157,7 @@ export const updateNews = (newsId, title, img, short_description, content, categ
             let response = await newsApi.updateNews(newsId,title, img, short_description, content, category, isPinned)
             console.log('updateNews', response)
             if(response.status === 200) {
-                // dispatch(setCurrentNews(response.data))
+                dispatch(getPopularAndPinnedNews())
                 dispatch(setIsNewsCreated(true))
             }
             dispatch(toggleIsFetching(false))
@@ -176,6 +177,7 @@ export const deleteNews = (newsId) => { //Удаление новости
             let response = await newsApi.deleteNews(newsId)
             console.log('deleteNews', response)
             if(response.status === 200 && response.data === true) {
+                dispatch(getPopularAndPinnedNews())
                 dispatch(setIsNewsDeleted(true))
             }
             dispatch(toggleIsFetching(false))

@@ -10,9 +10,7 @@ import DeleteModal from "../../../Common/DeleteModal/DeleteModal";
 const News = ({newsData, ...props}) => {
     return (
         <>
-            <motion.div className={s.news}
-                        variants={props.animations} initial="hidden" animate="visible"
-            >
+            <div className={s.news}>
                 <div className={s.top}>
                     <h2 className={s.title}>{newsData.title}</h2>
                     <div className={s.time}>{newsData.created_at}</div>
@@ -39,7 +37,7 @@ const News = ({newsData, ...props}) => {
                         </div>
                     </>
                 }
-            </motion.div>
+            </div>
             <Modal
                 closeModal={() => props.setIsModalOpen(false)}
                 open={props.isModalOpen}

@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import {compose} from "redux";
 import {withRouter} from "react-router-dom";
 import News from "./News";
@@ -11,6 +11,11 @@ const NewsForm = (props) => {
 
     const [contentState, setContentState] = useState(content)
     const [editorState, setEditorState] = useState(EditorState.createWithContent(convertFromRaw(content)))
+
+    useEffect(()=> {
+        setContentState(props.newsData.content)
+        setEditorState(EditorState.createWithContent(convertFromRaw(props.newsData.content)))
+    },[props.newsData.content])
 
     return (
         <News {...props} editorState={editorState} contentState={contentState} match={props.match} />

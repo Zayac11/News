@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import {compose} from "redux";
+import { motion } from "framer-motion"
 import {Redirect, withRouter} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {
@@ -17,6 +18,7 @@ const NewsContainer = (props) => {
 
     const dispatch = useDispatch()
     const isAuth = useSelector(state => state.auth.isAuth);
+    const isFetch = useSelector(state => state.auth.isFetch);
     const newsData = useSelector(state => state.news.newsData);
     const [isModalOpen, setIsModalOpen] = React.useState(false);
     const isNewsDeleted = useSelector(state => state.news.isNewsDeleted);
@@ -70,8 +72,15 @@ const NewsContainer = (props) => {
         return <Redirect to={'/'} />
     }
 
+    if(isFetch) {
+        return <MainContentLoaderNews />
+    }
+
     return (
-        <NewsForm handleDelete={handleDelete} animations={animations} isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} isAuth={isAuth} newsData={newsData} />
+        <motion.div
+            variants={animations} initial="hidden" animate="visible">
+            <NewsForm handleDelete={handleDelete} animations={animations} isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} isAuth={isAuth} newsData={newsData} />
+        </motion.div>
     )
 }
 
