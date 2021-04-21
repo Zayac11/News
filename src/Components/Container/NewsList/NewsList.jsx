@@ -10,6 +10,7 @@ import {MainContentLoaderLarge, MainContentLoaderSmall} from "../../../Common/Co
 
 //Общая компонента с выводом карточек новостей
 const NewsList = (props) => {
+
     return (
         <div className={s.newsList}>
             <div className={s.top}>
@@ -62,11 +63,16 @@ const NewsList = (props) => {
                                     </div>
                             }
                         </div>
+                        {
+                            props.isFetch
+                            ? <></>
+                            :
+                                <Paginator totalItemsCount={props.count}
+                                           pageSize={props.pageSize}
+                                           currentPage={props.currentPage}
+                                           onPageChanged={props.onPageChanged} />
+                        }
 
-                        <Paginator totalItemsCount={props.count}
-                                   pageSize={props.pageSize}
-                                   currentPage={props.currentPage}
-                                   onPageChanged={props.onPageChanged} />
                     </>
             }
 
