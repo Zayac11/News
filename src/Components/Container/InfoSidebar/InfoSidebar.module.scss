@@ -1,5 +1,35 @@
 .sidebar {
     grid-area: info;
+}
+
+.info {
     background-color: green;
     height: 200px;
 }
+
+.news {
+
+}
+
+.title {
+    font-size: 18px;
+    text-align: center;
+    margin: 30px 0 15px;
+}
+
+.newsItem {
+    max-width: 100%;
+    display: block;
+    color: black;
+    margin-bottom: 10px;
+}
+
+.newsTitle {
+    font-size: 14px;
+}
+
+.newsTime {
+    color: #595959;
+    font-size: 10px;
+}
+

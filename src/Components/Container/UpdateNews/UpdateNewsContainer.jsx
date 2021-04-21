@@ -47,7 +47,7 @@ const UpdateNewsContainer = (props) => {
     const onSubmit = (values, actions) => {
         console.log(values)
         console.log(contentState)
-        dispatch(updateNews(newsId, values.name, values.img, values.description, contentState, values.section, actions.setSubmitting))
+        dispatch(updateNews(newsId, values.name, values.img, values.description, contentState, values.section, values.isPinned, actions.setSubmitting))
     }
 
     if(isNewsCreated) {

@@ -12,6 +12,8 @@ const UpdateNewsForm = ({newsData, ...props}) => {
         description: newsData.short_description, // Краткое описание статьи
         img: newsData.img, // Превью статьи
         section: newsData.category, // Раздел статьи
+        isPinned: newsData.is_pinned, // Закрепленная новость
+
     }
 
     useEffect(() => {

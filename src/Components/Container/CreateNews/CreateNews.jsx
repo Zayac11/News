@@ -41,11 +41,21 @@ const CreateNews = (props) => {
                             </div>
 
                             <Editor
+                                wrapperClassName={s.wrapper}
                                 editorState={props.editorState}
                                 readOnly = {false}
                                 toolbarHidden = {false}
                                 onContentStateChange={props.setContentState}
                                 onEditorStateChange={props.setEditorState}
+                                toolbar={{
+                                    image:{
+                                        defaultSize: {
+                                            height: 'auto',
+                                            width: '100%',
+                                        },
+                                    }
+                                }}
+
                             />
 
                             <div className={`${s.section} ${s.top}`}>

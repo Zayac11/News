@@ -91,3 +91,9 @@ export const authApi = {
     },
 
 }
+
+export const infoSidebarApi = {
+    getPopularAndPinnedNews() {
+        return axios.post(baseUrl + `api/get_most_popular_and_pinned_messages`)
+    }
+}
