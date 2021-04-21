@@ -31,4 +31,24 @@
 .time {
     font-size: 12px;
     color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.view {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.viewImg {
+    width: 15px;
+    display: block;
+    margin-right: 5px;
+}
+
+.viewCount {
+    font-size: 12px;
+    color: white;
 }

@@ -51,9 +51,9 @@ export const newsApi = {
             })
     },
 
-    updateNews(newsId, title, img, short_description, content, category) { //Изменение новости
+    updateNews(newsId, title, img, short_description, content, category, isPinned) { //Изменение новости
         let data = getFormData([{name: 'title', value: title}, {name: 'img', value: img}, {name: 'short_description', value: short_description},
-            {name: 'content', value: JSON.stringify(content)}, {name: 'category', value: category}, {name: 'message_pk', value: newsId}])
+            {name: 'content', value: JSON.stringify(content)}, {name: 'category', value: category}, {name: 'message_pk', value: newsId}, {name: 'is_pinned', value: isPinned}])
         const accessToken = 'Bearer ' + localStorage.getItem('accessToken')
         return axios.put(baseUrl +`api/add_or_change_message`, data,
             {
@@ -76,6 +76,11 @@ export const newsApi = {
             }
         )
     },
+
+    incrementViewCounter(newsId) { //Увеличить кол-вол просмотров новости
+        // let data = getFormData([{name: 'pk', value: newsId}])
+        return axios.post(baseUrl +`api/update_view_counter/${newsId}`)
+    }
 
 }
 export const authApi = {

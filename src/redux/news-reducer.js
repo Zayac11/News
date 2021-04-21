@@ -149,11 +149,11 @@ export const createNews = (title, img, short_description, content, category, set
         }
     }
 }
-export const updateNews = (newsId, title, img, short_description, content, category, setSubmitting) => { //Изменение новости
+export const updateNews = (newsId, title, img, short_description, content, category, isPinned, setSubmitting) => { //Изменение новости
     return async (dispatch) => {
         dispatch(toggleIsFetching(true))
         try {
-            let response = await newsApi.updateNews(newsId,title, img, short_description, content, category)
+            let response = await newsApi.updateNews(newsId,title, img, short_description, content, category, isPinned)
             console.log('updateNews', response)
             if(response.status === 200) {
                 // dispatch(setCurrentNews(response.data))
@@ -183,6 +183,25 @@ export const deleteNews = (newsId) => { //Удаление новости
         catch (error) {
             console.log('deleteNews', error.toJSON())
             window.alert('deleteNews Error')
+            dispatch(toggleIsFetching(false))
+        }
+    }
+}
+
+export const incrementViewCounter = (newsId) => { //Увеличить кол-вол просмотров новости
+    return async (dispatch) => {
+        dispatch(toggleIsFetching(true))
+        try {
+            let response = await newsApi.incrementViewCounter(newsId)
+            console.log('incrementViewCounter', response)
+            if(response.status === 200 && response.data === true) {
+
+            }
+            dispatch(toggleIsFetching(false))
+        }
+        catch (error) {
+            console.log('incrementViewCounter', error.toJSON())
+            window.alert('incrementViewCounter Error')
             dispatch(toggleIsFetching(false))
         }
     }

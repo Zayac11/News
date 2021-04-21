@@ -65,6 +65,19 @@ const CreateNews = (props) => {
                                     <option value="Наука">Наука</option>
                                 </Field>
                             </div>
+                            {
+                                props.isUpdate &&
+                                <div className={s.section}>
+                                    <label className={`${s.label} ${s.checkbox}`} htmlFor="isPinned">
+                                        <span>Закрепить</span>
+                                        <Field
+                                            id="isPinned"
+                                            type="checkbox"
+                                            name="isPinned"
+                                        />
+                                    </label>
+                                </div>
+                            }
 
                             <div className={s.footer}>
                                 <div>

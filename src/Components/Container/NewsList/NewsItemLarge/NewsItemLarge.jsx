@@ -2,8 +2,10 @@ import React from "react";
 import s from './NewsItemLarge.module.scss'
 import {NavLink} from "react-router-dom";
 import {motion} from "framer-motion"
+import view from './../../../../assets/images/view.svg'
 
 const NewsItemLarge = (props) => {
+
     return (
         <motion.div variants={props.animationItem}>
             <NavLink to={`/current_news/${props.id}`} className={s.news}>
@@ -20,6 +22,9 @@ const NewsItemLarge = (props) => {
                     </div>
                     <div className={s.description}>
                         {props.short_description}
+                    </div>
+                    <div className={s.footer}>
+                        <img className={s.viewImg} src={view} alt="view_eye"/> <span className={s.viewCount}>{props.view_counter}</span>
                     </div>
             </NavLink>
         </motion.div>

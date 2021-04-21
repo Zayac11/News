@@ -2,7 +2,13 @@ import React, {useState, useEffect} from 'react'
 import {compose} from "redux";
 import {Redirect, withRouter} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
-import {getCurrentNews, deleteNewsData, deleteNews, setIsNewsCreated} from "../../../redux/news-reducer";
+import {
+    getCurrentNews,
+    deleteNewsData,
+    deleteNews,
+    setIsNewsCreated,
+    incrementViewCounter
+} from "../../../redux/news-reducer";
 import NewsForm from "./NewsForm";
 import {MainContentLoaderNews} from "../../../Common/ContentLoader/ContendLoader";
 import {toast} from "react-toastify";
@@ -15,6 +21,10 @@ const NewsContainer = (props) => {
     const [isModalOpen, setIsModalOpen] = React.useState(false);
     const isNewsDeleted = useSelector(state => state.news.isNewsDeleted);
     const notifyDelete = () => toast.error("Новость успешно удалена");
+
+    useEffect(() => { //ComponentDidMount
+        dispatch(incrementViewCounter(props.match.params.newsId))
+    }, []);
 
     useEffect(() => {
         dispatch(getCurrentNews(props.match.params.newsId))
