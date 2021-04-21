@@ -1,16 +1,9 @@
 import * as axios from "axios";
 
-const debug = false
-//true - localhost
-//false - prod.
+let baseUrl = process.env.REACT_APP_PRODUCTION_URL
 
-let baseUrl = ""
-
-if (debug) {
-    baseUrl = "http://127.0.0.1:8000/"
-}
-else {
-    baseUrl = process.env.REACT_APP_PRODUCTION_URL
+if(baseUrl === undefined) {
+    window.alert('Не удалось получить доступ к переменной окружения REACT_APP_PRODUCTION_URL')
 }
 
 const getFormData = (mass, auth) => { //Если нужен Bearer token, то auth = true
