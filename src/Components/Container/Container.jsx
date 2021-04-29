@@ -9,6 +9,7 @@ import NewsListContainer from "./NewsList/NewsListContainer";
 import CreateNewsContainer from "./CreateNews/CreateNewsContainer";
 import UpdateNewsContainer from "./UpdateNews/UpdateNewsContainer";
 import NewsContainer from "./News/NewsContainer";
+import SearchContainer from "./Search/SearchContainer";
 
 const Container = (props) => {
 
@@ -27,6 +28,7 @@ const Container = (props) => {
                         <Switch>
                             <Route exact path='/' render={ () => <NewsListContainer setSection={setSection} />} />
                             <Route exact path='/create_news' render={ () => <CreateNewsContainer />} /> {/*Создание новости*/}
+                            <Route exact path='/search' render={ () => <SearchContainer />} /> {/*Страница поиска*/}
                             <Route exact path='/create_news/:newsId' render={ () => <UpdateNewsContainer />} /> {/*Редактирование новости*/}
                             <Route exact path='/current_news/:newsId' render={ () => <NewsContainer />} /> {/*Страница новости*/}
                             <Route exact path='/news/:section' render={ () => <NewsListContainer setSection={setSection} />} />

@@ -3,7 +3,6 @@ import {compose} from "redux";
 import Navbar from "./Navbar";
 import {withRouter} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
-import {getRecentNews} from "../../../redux/news-reducer";
 import {logout} from "../../../redux/auth-reducer";
 import {getCurrentSection} from "../../../Common/getCurrentSection";
 
@@ -12,7 +11,9 @@ const NavbarContainer = (props) => {
     const dispatch = useDispatch()
     const isAuth = useSelector(state => state.auth.isAuth);
     const {time} = useDate()
-    const [letters, handleChangeLetters] = useState('')
+    const url = new URLSearchParams(props.location.search)
+    let initialLetters = url.get('letters');
+    const [letters, handleChangeLetters] = useState(initialLetters || '')
     const [currentSection, setCurrentSection] = useState('')
 
     const handleKeyUp = (e) => {
@@ -26,7 +27,8 @@ const NavbarContainer = (props) => {
     }
 
     const handleSubmit = () => {
-        dispatch(getRecentNews(letters, 1))
+
+        props.history.push(`/search?letters=${letters}`)
     }
 
     useEffect(() => {

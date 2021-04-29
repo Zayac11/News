@@ -10,14 +10,12 @@
     margin: 0 2px;
     padding: 2px;
     cursor: pointer;
-    color: black;
-    opacity: 0.5;
+    color: rgba(0,0,0,0.5);
     font-weight: 500;
 }
 
 .selectedPage {
     color: black;
-    opacity: 1;
 }
 
 .btn {
