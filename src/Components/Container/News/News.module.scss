@@ -25,6 +25,20 @@
     text-align: right;
 }
 
+.vision {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.viewImg {
+  width: 15px;
+  display: block;
+  margin-right: 5px;
+}
+.viewCount {
+  font-size: 12px;
+}
+
 .footer {
     @include flexible();
     justify-content: space-between;
