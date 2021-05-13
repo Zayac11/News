@@ -70,11 +70,14 @@ export const setIsNewsCreated = (isNewsCreated) => ({type: SET_IS_NEWS_CREATED, 
 export const setIsNewsDeleted = (isNewsDeleted) => ({type: SET_IS_NEWS_DELETED, isNewsDeleted})
 export const deleteNewsData = () => ({type: DETELE_NEWS_DATA})
 
-export const getRecentNews = (letters, pageNumber) => { //Получение списка последних новостей
+export const getRecentNews = (letters, pageNumber, isPopular = false) => { //Получение списка последних новостей
     return async (dispatch) => {
         dispatch(toggleIsFetching(true))
         try {
-            let response = await newsApi.getRecentNews(letters, pageNumber)
+            let response
+            if(isPopular) response = await newsApi.getPopularNews(pageNumber)
+            else response = await newsApi.getRecentNews(letters, pageNumber)
+
             console.log('getRecentNews', response)
             if(response.status === 200) {
                 dispatch(setNews(response.data))

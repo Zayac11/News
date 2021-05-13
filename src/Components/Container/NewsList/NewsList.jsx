@@ -16,7 +16,13 @@ const NewsList = (props) => {
             <div className={s.top}>
                 <h2 className={s.title}>{props.title}</h2>
                 <div className={s.toggle}>
-                   <span>Отображение</span><SwitchNews handleCheck={props.handleCheck} checked={props.checked} />
+                    {
+                        props.section === 'Главная' &&
+                            <>
+                               <span>Популярные</span><SwitchNews handleCheck={props.handleCheckPopular} checked={props.isPopular} />
+                            </>
+                    }
+                   <span className={s.displaying}>Отображение</span><SwitchNews handleCheck={props.handleCheck} checked={props.checked} />
                 </div>
             </div>
 

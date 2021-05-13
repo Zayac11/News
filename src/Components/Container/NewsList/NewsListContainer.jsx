@@ -7,8 +7,8 @@ import {getNewsCategory, getRecentNews} from "../../../redux/news-reducer";
 import {getCurrentSection} from "../../../Common/getCurrentSection";
 
 const NewsListContainer = (props) => {
-
     const [checked, setChecked] = useState(localStorage.getItem('checked') === 'true')
+    const [isPopular, setIsPopular] = useState(localStorage.getItem('is_popular') === 'true')
     const dispatch = useDispatch()
 
     const newsCards = useSelector(state => state.news.newsCards);
@@ -23,7 +23,7 @@ const NewsListContainer = (props) => {
             dispatch(getNewsCategory(getCurrentSection(props.match.params.section), 1))
         }
         else {
-            dispatch(getRecentNews('', 1))
+            dispatch(getRecentNews('', 1, isPopular))
         }
     }, [props.match.params.section]);
 
@@ -32,13 +32,18 @@ const NewsListContainer = (props) => {
             dispatch(getNewsCategory(getCurrentSection(props.match.params.section), pageNumber))
         }
         else {
-            dispatch(getRecentNews('', pageNumber))
+            dispatch(getRecentNews('', pageNumber, isPopular))
         }
     }
 
     const handleCheck = (checked) => {
         setChecked(checked)
         localStorage.setItem('checked', checked);
+    }
+    const handleCheckPopular = (checked) => {
+        setIsPopular(checked)
+        localStorage.setItem('is_popular', checked);
+        dispatch(getRecentNews('', 1, checked))
     }
 
     const animationContainer = {
@@ -63,7 +68,7 @@ const NewsListContainer = (props) => {
 
     return (
         <NewsList animationContainer={animationContainer} isFetch={isFetch} animationItem={animationItem} title={'Новости'} count={count} pageSize={pageSize} currentPage={currentPage}
-                  checked={checked} handleCheck={handleCheck}
+                  checked={checked} handleCheck={handleCheck} handleCheckPopular={handleCheckPopular} section={props.section} isPopular={isPopular}
                   onPageChanged={onPageChanged} newsCards={newsCards} />
     )
 }

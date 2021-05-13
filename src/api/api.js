@@ -30,10 +30,17 @@ export const newsApi = {
         return axios.post(baseUrl +`api/recent_messages?page=${pageNumber}`, data)
     },
 
+    getPopularNews(pageNumber) {//Получение списка всех последних новостей, с возможностью поиска
+        // debugger
+        let data = getFormData([])
+        return axios.post(baseUrl +`api/popular_news?page=${pageNumber}`, data)
+    },
+
     getNewsCategory(category, pageNumber) {//Получение списка всех последних новостей по конкретной категории
         let data = getFormData([{name: 'category', value: category}])
         return axios.post(baseUrl +`api/news_of_current_category?page=${pageNumber}`, data)
     },
+
     getCurrentNews(newsId) {//Получение списка всех последних новостей по конкретной категории
         let data = getFormData([{name: 'message_pk', value: newsId}])
         return axios.post(baseUrl +`api/current_message`, data)
