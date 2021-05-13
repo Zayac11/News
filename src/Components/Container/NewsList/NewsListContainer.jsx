@@ -1,15 +1,17 @@
 import React, {useEffect, useState} from "react";
 import {compose} from "redux";
 import NewsList from "./NewsList";
-import {withRouter} from "react-router-dom";
+import {useHistory, withRouter} from 'react-router-dom'
 import {useDispatch, useSelector} from "react-redux";
 import {getNewsCategory, getRecentNews} from "../../../redux/news-reducer";
 import {getCurrentSection} from "../../../Common/getCurrentSection";
+import queryString from 'querystring'
 
 const NewsListContainer = (props) => {
     const [checked, setChecked] = useState(localStorage.getItem('checked') === 'true')
     const [isPopular, setIsPopular] = useState(localStorage.getItem('is_popular') === 'true')
     const dispatch = useDispatch()
+    const history = useHistory()
 
     const newsCards = useSelector(state => state.news.newsCards);
     const count = useSelector(state => state.news.count);
@@ -19,21 +21,30 @@ const NewsListContainer = (props) => {
 
     useEffect(() => {
         props.setSection(props.match.params.section ? props.match.params.section  : 'Главная')
+        const url = new URLSearchParams(props.location.search)
+        let page = url.get('page')
         if(props.match.params.section) {
-            dispatch(getNewsCategory(getCurrentSection(props.match.params.section), 1))
+            dispatch(getNewsCategory(getCurrentSection(props.match.params.section), Number(page) || 1))
         }
         else {
-            dispatch(getRecentNews('', 1, isPopular))
+            dispatch(getRecentNews('', Number(page) || 1, isPopular))
         }
     }, [props.match.params.section]);
 
     const onPageChanged = (pageNumber) => { // Поиск по новой странице + изменение текущей
+        const query = {}
         if(props.match.params.section) {
             dispatch(getNewsCategory(getCurrentSection(props.match.params.section), pageNumber))
         }
         else {
             dispatch(getRecentNews('', pageNumber, isPopular))
         }
+
+        if (pageNumber !== 1) query.page = String(pageNumber)
+        history.push({
+            pathname: '/search',
+            search: queryString.stringify(query)
+        })
     }
 
     const handleCheck = (checked) => {
