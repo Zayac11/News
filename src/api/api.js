@@ -39,9 +39,9 @@ export const newsApi = {
         return axios.post(baseUrl +`api/current_message`, data)
     },
 
-    createNews(title, img, short_description, content, category) { //Создание новости
+    createNews(title, img, short_description, content, category, isPinned) { //Создание новости
         let data = getFormData([{name: 'title', value: title}, {name: 'img', value: img}, {name: 'short_description', value: short_description},
-            {name: 'content', value: JSON.stringify(content)}, {name: 'category', value: category}])
+            {name: 'content', value: JSON.stringify(content)}, {name: 'category', value: category}, {name: 'is_pinned', value: isPinned}])
         const accessToken = 'Bearer ' + localStorage.getItem('accessToken')
         return axios.post(baseUrl +`api/add_or_change_message`, data,
             {

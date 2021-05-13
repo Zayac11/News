@@ -11,6 +11,7 @@ const CreateNewsForm = (props) => {
         description: '', // Краткое описание статьи
         img: '', // Превью статьи
         section: 'Спорт', // Раздел статьи
+        isPinned: false, // Закрепленная новость
     }
 
     let validationSchema = Yup.object({

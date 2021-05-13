@@ -55,7 +55,7 @@ const CreateNewsContainer = (props) => {
         console.log(values)
         console.log(contentState)
         console.log(editorState)
-        dispatch(createNews(values.name, values.img, values.description, contentState, values.section, actions.setSubmitting))
+        dispatch(createNews(values.name, values.img, values.description, contentState, values.section, values.isPinned, actions.setSubmitting))
     }
 
     if(isNewsCreated) {

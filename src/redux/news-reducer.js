@@ -129,12 +129,12 @@ export const getNewsCategory = (category, pageNumber) => { //Получение 
     }
 }
 
-export const createNews = (title, img, short_description, content, category, setSubmitting) => { //Создание новости
+export const createNews = (title, img, short_description, content, category, isPinned, setSubmitting) => { //Создание новости
     return async (dispatch) => {
 
         dispatch(toggleIsFetching(true))
         try {
-            let response = await newsApi.createNews(title, img, short_description, content, category)
+            let response = await newsApi.createNews(title, img, short_description, content, category, isPinned)
             console.log('createNews', response)
             if(response.status === 200) {
                 dispatch(getPopularAndPinnedNews())
