@@ -20,6 +20,7 @@ const NewsListContainer = (props) => {
     const isFetch = useSelector(state => state.auth.isFetch);
 
     useEffect(() => {
+        debugger
         props.setSection(props.match.params.section ? props.match.params.section  : 'Главная')
         const url = new URLSearchParams(props.location.search)
         let page = url.get('page')
@@ -42,7 +43,7 @@ const NewsListContainer = (props) => {
 
         if (pageNumber !== 1) query.page = String(pageNumber)
         history.push({
-            pathname: '/search',
+            pathname: props.section === 'Главная' ? '/' : `/news/${props.section}`,
             search: queryString.stringify(query)
         })
     }
