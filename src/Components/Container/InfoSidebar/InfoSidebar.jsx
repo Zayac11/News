@@ -7,9 +7,6 @@ const InfoSidebar = (props) => {
     return (
         <>
             <div className={s.sidebar}>
-                <div className={s.info}>
-                    Информация
-                </div>
                 <div className={s.news}>
                     {
                         props.popular &&

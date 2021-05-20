@@ -10,6 +10,7 @@ import CreateNewsContainer from "./CreateNews/CreateNewsContainer";
 import UpdateNewsContainer from "./UpdateNews/UpdateNewsContainer";
 import NewsContainer from "./News/NewsContainer";
 import SearchContainer from "./Search/SearchContainer";
+import TopInfoContainer from './TopInfo/TopInfoContainer'
 
 const Container = (props) => {
 
@@ -18,6 +19,7 @@ const Container = (props) => {
     return (
         <div className={'outer'}>
             <NavbarContainer section={section} />
+            <TopInfoContainer />
             <div className={'container'}>
                 <div className={s.content}>
 

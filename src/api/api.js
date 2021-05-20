@@ -102,5 +102,31 @@ export const authApi = {
 export const infoSidebarApi = {
     getPopularAndPinnedNews() {
         return axios.post(baseUrl + `api/get_most_popular_and_pinned_messages`)
-    }
+    },
+
+    getCovidInformation() {
+
+        const ApiKey = 'acdf13f780msh3d1ae28246c6fdbp1d19a5jsn4bfb102b1e40'
+        let myHeaders = new Headers();
+        myHeaders.append("x-rapidapi-key", ApiKey);
+        myHeaders.append("x-rapidapi-host", 'covid-193.p.rapidapi.com');
+
+        return axios.get('https://covid-193.p.rapidapi.com/statistics?country=Russia',
+            {
+                headers: {
+                    'x-rapidapi-key': ApiKey,
+                    "x-rapidapi-host": 'covid-193.p.rapidapi.com'
+                }
+            }
+        ).then(response => response.data.response[0].cases)
+    },
+
+    getMoscowWeather() {
+        return axios.get('http://api.openweathermap.org/data/2.5/weather?q=moscow&appid=178ae9a5a359aa5a542be240bd36bc59&units=metric')
+            .then(response => response.data.main.temp)
+    },
+    getCurrency() {
+        return axios.get('https://www.cbr-xml-daily.ru/latest.js')
+            .then(response => response.data.rates)
+    },
 }

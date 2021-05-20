@@ -1,0 +1,63 @@
+@import "../../../Common/style";
+
+.topContainer {
+
+}
+
+.top {
+    margin-bottom: 20px;
+    @include flexible();
+    justify-content: space-between;
+
+}
+
+.covid {
+    @include flexible();
+    & img {
+        display: block;
+        width: 25px;
+        margin-right: 10px;
+    }
+}
+
+.covidTitle {
+    margin-right: 10px;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
+.value {
+    font-weight: 500;
+}
+
+.weather {
+    @include flexible();
+    & img {
+        display: block;
+        width: 25px;
+        margin-right: 10px;
+    }
+}
+
+.currency {
+    @include flexible();
+}
+
+.dollar {
+    @include flexible();
+    margin-right: 15px;
+    & img {
+        display: block;
+        width: 25px;
+        margin-right: 5px;
+    }
+}
+
+.euro {
+    @include flexible();
+    & img {
+        display: block;
+        width: 25px;
+        margin-right: 5px;
+    }
+}

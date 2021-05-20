@@ -20,7 +20,6 @@ const NewsListContainer = (props) => {
     const isFetch = useSelector(state => state.auth.isFetch);
 
     useEffect(() => {
-        debugger
         props.setSection(props.match.params.section ? props.match.params.section  : 'Главная')
         const url = new URLSearchParams(props.location.search)
         let page = url.get('page')
