@@ -12,6 +12,7 @@
 }
 
 .covid {
+    font-size: 14px;
     @include flexible();
     & img {
         display: block;
@@ -31,6 +32,7 @@
 }
 
 .weather {
+    font-size: 14px;
     @include flexible();
     & img {
         display: block;
@@ -40,6 +42,7 @@
 }
 
 .currency {
+    font-size: 14px;
     @include flexible();
 }
 
@@ -61,3 +64,55 @@
         margin-right: 5px;
     }
 }
+
+@media (max-width: 778px) {
+    .weather, .covid, .currency {
+        font-size: 12px;
+    }
+
+    .covid {
+        margin: 0 10px;
+    }
+
+    .covid, .weather, .currency {
+        & img {
+            margin-right: 10px;
+            width: 20px;
+        }
+    }
+}
+
+@media (max-width: 680px) {
+    .top {
+        margin-bottom: 10px;
+    }
+    .weather {
+        grid-area: weather;
+        margin: 0 auto;
+    }
+    .covid {
+        grid-area: covid;
+        margin: 0 auto;
+    }
+    .currency {
+        margin: 0 auto;
+        grid-area: currency;
+    }
+    .top {
+        display: grid;
+        grid-template-areas:
+        "weather currency"
+        "covid covid";
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 10px;
+    }
+}
+
+
+@media (max-width: 415px) {
+    .covid {
+        display: none;
+    }
+}
+
+

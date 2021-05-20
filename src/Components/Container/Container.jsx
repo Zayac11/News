@@ -20,7 +20,7 @@ const Container = (props) => {
         <div className={'outer'}>
             <NavbarContainer section={section} />
 
-            {/*<TopInfoContainer />*/}
+            <TopInfoContainer />
             {/*<div className={'container'}>*/}
             {/*    <div className={s.content}>*/}
 
