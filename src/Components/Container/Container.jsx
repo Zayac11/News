@@ -11,6 +11,8 @@ import UpdateNewsContainer from "./UpdateNews/UpdateNewsContainer";
 import NewsContainer from "./News/NewsContainer";
 import SearchContainer from "./Search/SearchContainer";
 import TopInfoContainer from './TopInfo/TopInfoContainer'
+import {isDesktop} from 'react-device-detect'
+
 
 const Container = (props) => {
 
@@ -23,8 +25,10 @@ const Container = (props) => {
             <TopInfoContainer />
             {/*<div className={'container'}>*/}
             {/*    <div className={s.content}>*/}
-
+            {
+                isDesktop &&
             {/*        <SectionSidebar />*/}
+            }
             {/*        <InfoSidebarContainer />*/}
 
             {/*        <div className={s.main}>*/}

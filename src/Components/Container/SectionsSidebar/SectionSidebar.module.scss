@@ -43,3 +43,36 @@
     background-size: 100% 2px;
     background-image: linear-gradient(black, black);
 }
+
+
+@media (max-width: 650px) {
+    .sidebar {
+        padding: 20px 30px;
+    }
+}
+
+@media (max-width: 480px) {
+    .title {
+        margin-bottom: 20px;
+    }
+    .list {
+        & li {
+            margin-bottom: 15px;
+        }
+    }
+}
+
+@media (max-width: 400px) {
+    .sidebar {
+        padding: 20px 10px;
+    }
+    .title {
+        font-size: 14px;
+    }
+    .list {
+        & li {
+            font-size: 12px;
+        }
+    }
+}
+
