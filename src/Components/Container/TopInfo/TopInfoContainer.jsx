@@ -19,7 +19,7 @@ const TopInfoContainer = (props) => {
 
     useEffect( () => {
 
-        // dispatch(getCovidInformation())
+        dispatch(getCovidInformation())
         dispatch(getMoscowWeather())
         dispatch(getCurrency())
     }, [])
