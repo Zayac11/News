@@ -7,6 +7,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {createNews, setIsNewsCreated} from "../../../redux/news-reducer";
 import {Redirect} from "react-router-dom";
 import {toast} from "react-toastify";
+import {isDesktop} from 'react-device-detect'
 
 const CreateNewsContainer = (props) => {
     const dispatch = useDispatch()
@@ -59,6 +60,9 @@ const CreateNewsContainer = (props) => {
     }
 
     if(isNewsCreated) {
+        return <Redirect to={'/'} />
+    }
+    if(!isDesktop) {
         return <Redirect to={'/'} />
     }
 

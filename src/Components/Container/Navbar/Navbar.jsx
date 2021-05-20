@@ -4,6 +4,7 @@ import s from './Navbar.module.scss'
 import {NavLink} from "react-router-dom";
 import SlidingPanel from 'react-sliding-side-panel'
 import SidePanel from './SidePanel/SidePanel'
+import search from '../../../assets/images/search.svg'
 
 const Navbar = (props) => {
     return (
@@ -12,11 +13,11 @@ const Navbar = (props) => {
                 <div className={s.navbar}>
                     <div className={s.nameContainer}>
                         <div className={s.sidePanel}>
-                            <button onClick={() => props.setOpenPanel(true)}>Open</button>
+                            <img className={s.menu} onClick={() => props.setOpenPanel(true)} src="https://img.icons8.com/android/25/ffffff/menu.png" alt='menu'/>
                             <SlidingPanel
                                 type={'left'}
                                 isOpen={props.openPanel}
-                                size={30}
+                                size={45}
                                 backdropClicked ={() => props.setOpenPanel(false)}
                             >
                                 <SidePanel openPanel={props.openPanel} setOpenPanel={props.setOpenPanel} />
@@ -48,7 +49,10 @@ const Navbar = (props) => {
                             }
 
                             <div className={s.inputContainer}>
-                                <input type="text" onKeyUp={props.handleKeyUp} value={props.letters} onChange={ (e) => props.handleChangeLetters(e.target.value)} placeholder={'Поиск'} className={s.input}/>
+                                <input id='search' type="text" onKeyUp={props.handleKeyUp} value={props.letters} onChange={ (e) => props.handleChangeLetters(e.target.value)} placeholder={'Поиск'} className={s.input}/>
+                                <label className={s.searchIcon} htmlFor='search'>
+                                    <img src={search} onClick={props.handleSubmit} alt='search' />
+                                </label>
                             </div>
                             <div className={s.time}>
                                 {props.time}

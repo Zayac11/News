@@ -12,6 +12,7 @@ import {
 } from "../../../redux/news-reducer";
 import Preloader from "../../../Common/Preloader/Preloader";
 import {toast} from "react-toastify";
+import {isDesktop} from 'react-device-detect'
 
 const UpdateNewsContainer = (props) => {
 
@@ -51,6 +52,9 @@ const UpdateNewsContainer = (props) => {
     }
 
     if(isNewsCreated) {
+        return <Redirect to={'/'} />
+    }
+    if(!isDesktop) {
         return <Redirect to={'/'} />
     }
 

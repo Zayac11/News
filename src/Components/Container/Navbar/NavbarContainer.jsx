@@ -28,6 +28,7 @@ const NavbarContainer = (props) => {
     }
 
     const handleSubmit = () => {
+        debugger
         if(letters === '')props.history.push(`/search`)
         else props.history.push(`/search?letters=${letters}`)
     }
@@ -38,7 +39,7 @@ const NavbarContainer = (props) => {
 
     return (
         <Navbar handleLogout={handleLogout} openPanel={openPanel} setOpenPanel={setOpenPanel} isAuth={isAuth}
-                letters={letters} section={currentSection} handleKeyUp={handleKeyUp}
+                letters={letters} section={currentSection} handleKeyUp={handleKeyUp} handleSubmit={handleSubmit}
                 handleChangeLetters={handleChangeLetters} time={time} match={props.match} />
     )
 }

@@ -19,25 +19,27 @@ const Container = (props) => {
     return (
         <div className={'outer'}>
             <NavbarContainer section={section} />
-            <TopInfoContainer />
-            <div className={'container'}>
-                <div className={s.content}>
 
-                    <SectionSidebar />
-                    <InfoSidebarContainer />
+            {/*<TopInfoContainer />*/}
+            {/*<div className={'container'}>*/}
+            {/*    <div className={s.content}>*/}
 
-                    <div className={s.main}>
-                        <Switch>
-                            <Route exact path='/' render={ () => <NewsListContainer section={section} setSection={setSection} />} />
-                            <Route exact path='/create_news' render={ () => <CreateNewsContainer />} /> {/*Создание новости*/}
-                            <Route exact path='/search' render={ () => <SearchContainer />} /> {/*Страница поиска*/}
-                            <Route exact path='/create_news/:newsId' render={ () => <UpdateNewsContainer />} /> {/*Редактирование новости*/}
-                            <Route exact path='/current_news/:newsId' render={ () => <NewsContainer />} /> {/*Страница новости*/}
-                            <Route exact path='/news/:section' render={ () => <NewsListContainer section={section} setSection={setSection} />} />
-                        </Switch>
-                    </div>
-                </div>
-            </div>
+            {/*        <SectionSidebar />*/}
+            {/*        <InfoSidebarContainer />*/}
+
+            {/*        <div className={s.main}>*/}
+            {/*            <Switch>*/}
+            {/*                <Route exact path='/' render={ () => <NewsListContainer section={section} setSection={setSection} />} />*/}
+            {/*                <Route exact path='/create_news' render={ () => <CreateNewsContainer />} /> /!*Создание новости*!/*/}
+            {/*                <Route exact path='/search' render={ () => <SearchContainer />} /> /!*Страница поиска*!/*/}
+            {/*                <Route exact path='/create_news/:newsId' render={ () => <UpdateNewsContainer />} /> /!*Редактирование новости*!/*/}
+            {/*                <Route exact path='/current_news/:newsId' render={ () => <NewsContainer />} /> /!*Страница новости*!/*/}
+            {/*                <Route exact path='/news/:section' render={ () => <NewsListContainer section={section} setSection={setSection} />} />*/}
+            {/*            </Switch>*/}
+            {/*        </div>*/}
+            {/*    </div>*/}
+            {/*</div>*/}
+
         </div>
     )
 }
