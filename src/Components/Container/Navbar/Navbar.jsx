@@ -2,6 +2,8 @@ import React from 'react'
 import {compose} from "redux";
 import s from './Navbar.module.scss'
 import {NavLink} from "react-router-dom";
+import SlidingPanel from 'react-sliding-side-panel'
+import SidePanel from './SidePanel/SidePanel'
 
 const Navbar = (props) => {
     return (
@@ -9,15 +11,28 @@ const Navbar = (props) => {
             <div className={'container'}>
                 <div className={s.navbar}>
                     <div className={s.nameContainer}>
-                        <NavLink to={'/'} className={s.name}>
-                            News Agency
-                        </NavLink>
-                        {
-                            props.isAuth &&
-                            <div className={s.admin}>
-                                Администратор
-                            </div>
-                        }
+                        <div className={s.sidePanel}>
+                            <button onClick={() => props.setOpenPanel(true)}>Open</button>
+                            <SlidingPanel
+                                type={'left'}
+                                isOpen={props.openPanel}
+                                size={30}
+                                backdropClicked ={() => props.setOpenPanel(false)}
+                            >
+                                <SidePanel openPanel={props.openPanel} setOpenPanel={props.setOpenPanel} />
+                            </SlidingPanel>
+                        </div>
+                        <div>
+                            <NavLink to={'/'} className={s.name}>
+                                News Agency
+                            </NavLink>
+                            {
+                                props.isAuth &&
+                                <div className={s.admin}>
+                                    Администратор
+                                </div>
+                            }
+                        </div>
                     </div>
                     <div className={s.info}>
                         {

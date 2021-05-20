@@ -16,6 +16,7 @@
 }
 
 .nameContainer {
+    @include flexible();
     width: max-content;
 }
 
@@ -98,3 +99,14 @@
     text-align: right;
     width: 60px;
 }
+
+.sidePanel {
+    display: none;
+}
+
+@media (max-width: 650px) {
+    .sidePanel {
+        display: block;
+    }
+}
+

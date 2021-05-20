@@ -1,4 +1,5 @@
 import './App.css';
+import 'react-sliding-side-panel/src/index.css'
 import Container from "./Components/Container/Container";
 import {Route, Switch} from "react-router-dom";
 import LoginContainer from "./Components/Login/LoginContainer";

@@ -13,6 +13,7 @@ const NavbarContainer = (props) => {
     const {time} = useDate()
     const url = new URLSearchParams(props.location.search)
     let initialLetters = url.get('letters');
+    const [openPanel, setOpenPanel] = useState(false)
     const [letters, handleChangeLetters] = useState(initialLetters || '')
     const [currentSection, setCurrentSection] = useState('')
 
@@ -36,7 +37,9 @@ const NavbarContainer = (props) => {
     }, [props.section]);
 
     return (
-        <Navbar handleLogout={handleLogout} isAuth={isAuth} letters={letters} section={currentSection} handleKeyUp={handleKeyUp} handleChangeLetters={handleChangeLetters} time={time} match={props.match} />
+        <Navbar handleLogout={handleLogout} openPanel={openPanel} setOpenPanel={setOpenPanel} isAuth={isAuth}
+                letters={letters} section={currentSection} handleKeyUp={handleKeyUp}
+                handleChangeLetters={handleChangeLetters} time={time} match={props.match} />
     )
 }
 
