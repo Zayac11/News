@@ -1,0 +1,33 @@
+{
+  "files": {
+    "main.css": "/static/css/main.9911277e.chunk.css",
+    "main.js": "/static/js/main.fff24347.chunk.js",
+    "main.js.map": "/static/js/main.fff24347.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.2499a635.js",
+    "runtime-main.js.map": "/static/js/runtime-main.2499a635.js.map",
+    "static/css/2.8631597d.chunk.css": "/static/css/2.8631597d.chunk.css",
+    "static/js/2.dabb9656.chunk.js": "/static/js/2.dabb9656.chunk.js",
+    "static/js/2.dabb9656.chunk.js.map": "/static/js/2.dabb9656.chunk.js.map",
+    "static/js/3.30f68a9e.chunk.js": "/static/js/3.30f68a9e.chunk.js",
+    "static/js/3.30f68a9e.chunk.js.map": "/static/js/3.30f68a9e.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/2.8631597d.chunk.css.map": "/static/css/2.8631597d.chunk.css.map",
+    "static/css/main.9911277e.chunk.css.map": "/static/css/main.9911277e.chunk.css.map",
+    "static/js/2.dabb9656.chunk.js.LICENSE.txt": "/static/js/2.dabb9656.chunk.js.LICENSE.txt",
+    "static/media/cloudy.adbb7f88.svg": "/static/media/cloudy.adbb7f88.svg",
+    "static/media/coronavirus.8bb40686.svg": "/static/media/coronavirus.8bb40686.svg",
+    "static/media/dollar.1a93d95c.svg": "/static/media/dollar.1a93d95c.svg",
+    "static/media/edit-5.cc72686c.svg": "/static/media/edit-5.cc72686c.svg",
+    "static/media/euro.11a79757.svg": "/static/media/euro.11a79757.svg",
+    "static/media/loader.b7e7449a.svg": "/static/media/loader.b7e7449a.svg",
+    "static/media/search.1ae99571.svg": "/static/media/search.1ae99571.svg",
+    "static/media/view.935daeca.svg": "/static/media/view.935daeca.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.2499a635.js",
+    "static/css/2.8631597d.chunk.css",
+    "static/js/2.dabb9656.chunk.js",
+    "static/css/main.9911277e.chunk.css",
+    "static/js/main.fff24347.chunk.js"
+  ]
+}
