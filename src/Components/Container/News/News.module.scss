@@ -7,17 +7,12 @@
 }
 
 .top {
-    display: grid;
-    grid-template-columns: 4fr 1fr;
-    align-items: center;
     margin-bottom: 10px;
 }
 
 .title {
     font-size: 18px;
     font-weight: 500;
-    margin-right: 10px;
-
 }
 
 .time {
@@ -25,10 +20,13 @@
     text-align: right;
 }
 
+.info {
+    @include flexible();
+    justify-content: space-between;
+}
+
 .vision {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
+    @include flexible();
 }
 
 .viewImg {
@@ -39,6 +37,10 @@
 
 .viewCount {
     font-size: 12px;
+}
+
+.editor {
+    width: 100%;
 }
 
 .footer {
@@ -54,7 +56,7 @@
     border: 1px solid $delete-color;
     color: red;
     background-color: transparent;
-    padding: 10px 40px;
+    padding: 10px 0;
     transition: all 0.4s ease;
     font-size: 16px;
     cursor: pointer;
@@ -87,4 +89,31 @@
     color: white;
     border: 1px solid #496E83;
     background-color: #496E83;
+}
+
+@media (max-width: 650px) {
+    .news {
+        width: 100%;
+    }
+    .footer {
+        flex-direction: column;
+    }
+
+    .updateBtn {
+        display: none;
+    }
+    .deleteBtn {
+        width: 100%;
+    }
+}
+@media (max-width: 480px) {
+    .news {
+        padding: 15px;
+    }
+    .title {
+        font-size: 14px;
+    }
+    .editor, .time, .viewCount, .updateBtn, .deleteBtn {
+        font-size: 12px;
+    }
 }

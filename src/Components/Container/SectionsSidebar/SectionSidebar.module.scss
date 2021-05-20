@@ -1,5 +1,4 @@
 .sidebar {
-    grid-area: section;
     padding: 25px 0;
 }
 
@@ -44,6 +43,12 @@
     background-image: linear-gradient(black, black);
 }
 
+
+@media (max-width: 778px) {
+    .sidebar {
+        padding: 25px 0 0;
+    }
+}
 
 @media (max-width: 650px) {
     .sidebar {

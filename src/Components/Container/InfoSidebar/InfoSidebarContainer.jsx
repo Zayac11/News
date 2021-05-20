@@ -4,9 +4,6 @@ import InfoSidebar from "./InfoSidebar";
 import {useDispatch, useSelector} from "react-redux";
 import {
     getPopularAndPinnedNews,
-    getCovidInformation,
-    getMoscowWeather,
-    getCurrency
 } from '../../../redux/info-sidebar-reducer'
 
 const InfoSidebarContainer = (props) => {

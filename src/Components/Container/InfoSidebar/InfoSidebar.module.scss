@@ -1,5 +1,6 @@
 .sidebar {
     grid-area: info;
+    height: max-content;
 }
 
 .news {
@@ -27,4 +28,17 @@
     color: #595959;
     font-size: 10px;
 }
+
+@media (max-width: 778px) {
+    .title {
+        margin: 15px 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .sidebar {
+        display: none;
+    }
+}
+
 
