@@ -6,6 +6,7 @@ import {NavLink} from "react-router-dom";
 import Modal from "react-png-modal";
 import DeleteModal from "../../../Common/DeleteModal/DeleteModal";
 import view from "../../../assets/images/view.svg";
+import edit from "../../../assets/images/edit-5.svg";
 
 const News = ({newsData, ...props}) => {
     return (
@@ -33,7 +34,7 @@ const News = ({newsData, ...props}) => {
                     <>
                         <div className={s.footer}>
                             <NavLink className={s.updateBtn} to={`/create_news/${newsData.id}`}>
-                                Редактировать
+                                <div>Редактировать</div> <img src={edit} alt='edit' />
                             </NavLink>
                             <button onClick={() => props.setIsModalOpen(true)} className={s.deleteBtn}>
                                 Удалить

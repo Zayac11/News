@@ -22,10 +22,24 @@
 }
 
 .link {
-    font-size: 14px;
     color: black;
+    font-size: 14px;
+    width: max-content;
+    text-decoration: none;
+    background-image: linear-gradient(black, black);
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    background-size: 0 2px;
+    padding-bottom: 4px;
+    transition: background-size 0.7s;
+}
+
+.link:hover {
+    background-size: 100% 2px;
 }
 
 .active {
     font-weight: 500;
+    background-size: 100% 2px;
+    background-image: linear-gradient(black, black);
 }

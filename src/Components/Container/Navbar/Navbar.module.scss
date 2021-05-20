@@ -1,7 +1,7 @@
 @import "../../../Common/style";
 
 .navbarContainer {
-    background-color: #d8d8d8;
+    background-color: #294352;
 }
 
 .navbar {
@@ -20,7 +20,7 @@
 }
 
 .name {
-    color: black;
+    color: white;
     font-size: 20px;
     font-weight: 600;
     grid-area: name;
@@ -31,7 +31,7 @@
     text-align: center;
     font-size: 12px;
     font-weight: 500;
-    color: rgba(0, 0, 0, 0.5);
+    color: rgba(255, 255, 255, 0.7);
 }
 
 .createBtn {
@@ -39,16 +39,27 @@
     display: block;
     padding: 13px 42px;
     border-radius: 2px;
-    background-color: #646464;
+    background-color: white;
     font-size: 14px;
     font-weight: 500;
-    color: white;
+    color: black;
+    transition: all 0.4s ease;
+}
+
+.createBtn:hover {
+    background-color: $hover-color;
 }
 
 .logoutBtn {
     @include defaultButton();
     text-decoration: underline;
     margin-right: 40px;
+    color: white;
+    transition: all 0.4s ease;
+}
+
+.logoutBtn:hover {
+    color: $hover-color;
 }
 
 .info {
@@ -60,6 +71,7 @@
 .searchContainer {
     margin-left: auto;
     @include flexible();
+
 }
 
 .inputContainer {
@@ -69,18 +81,20 @@
 .input {
     display: block;
     outline: none;
-    border: 1px solid black;
+    border: 1px solid white;
     font-size: 16px;
     padding: 11px 20px;
+    color: white;
     background-color: transparent;
 }
 
 .input::placeholder {
     font-size: 16px;
-    color: black;
+    color: white;
 }
 
 .time {
+    color: white;
     text-align: right;
     width: 60px;
 }

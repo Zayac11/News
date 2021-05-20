@@ -6,8 +6,9 @@ const SwitchNews = (props) => {
         <Switch
             checked={props.checked}
             onChange={props.handleCheck}
-            onColor="#888"
-            onHandleColor="#888"
+            offColor="#5B8CA9"
+            onColor="#294352"
+            onHandleColor="#294352"
             handleDiameter={20}
             uncheckedIcon={false}
             checkedIcon={false}

@@ -3,7 +3,7 @@
 .create {
     padding: 40px 30px;
     border-radius: 2px;
-    background-color: #d8d8d8;
+    background-color: $news-back-color;
 }
 
 .wrapper {
@@ -78,13 +78,17 @@
 
 .submitBtn {
     cursor: pointer;
-    width: 244px;
     outline: none;
     border: none;
     border-radius: 2px;
-    padding: 15px 45px;
-    background-color: #646464;
+    padding: 15px 30px;
+    background-color: #294352;
     font-size: 14px;
     font-weight: 500;
     color: white;
+    transition: all 0.4s ease;
+}
+
+.submitBtn:hover {
+    background-color: #496E83;
 }

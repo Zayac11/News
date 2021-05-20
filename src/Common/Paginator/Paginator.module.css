@@ -15,7 +15,7 @@
 }
 
 .selectedPage {
-    color: black;
+    color: #294352;
 }
 
 .btn {
@@ -26,7 +26,7 @@
     border: none;
     outline: none;
     background-color: transparent;
-    color: black;
+    color: #294352;
 }
 
 @media (max-width: 480px) {

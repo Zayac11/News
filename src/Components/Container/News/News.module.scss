@@ -2,41 +2,43 @@
 
 .news {
     border-radius: 2px;
-    background-color: #d8d8d8;
+    background-color: $news-back-color;
     padding: 30px 30px 20px;
 }
 
 .top {
-    @include flexible();
-    margin-bottom: 10px;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 4fr 1fr;
     align-items: center;
+    margin-bottom: 10px;
 }
 
 .title {
     font-size: 18px;
     font-weight: 500;
     margin-right: 10px;
+
 }
 
 .time {
     font-size: 14px;
-    width: 160px;
     text-align: right;
 }
 
 .vision {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
 }
+
 .viewImg {
-  width: 15px;
-  display: block;
-  margin-right: 5px;
+    width: 15px;
+    display: block;
+    margin-right: 5px;
 }
+
 .viewCount {
-  font-size: 12px;
+    font-size: 12px;
 }
 
 .footer {
@@ -57,20 +59,32 @@
     font-size: 16px;
     cursor: pointer;
 }
+
 .deleteBtn:hover {
     background-color: $delete-color;
     color: white;
 }
 
 .updateBtn {
+    @include flexible();
+    justify-content: center;
     width: 200px;
-    display: block;
-    color: black;
-    padding: 10px 40px;
-    border: 1px solid black;
+    color: white;
+    background-color: #294352;
+    padding: 10px 0;
+    border: 1px solid #294352;
     transition: all 0.4s ease;
+
+    div {
+        margin-right: 10px;
+    }
+    img {
+        display: block;
+    }
 }
+
 .updateBtn:hover {
     color: white;
-    background-color: #595959;
+    border: 1px solid #496E83;
+    background-color: #496E83;
 }
