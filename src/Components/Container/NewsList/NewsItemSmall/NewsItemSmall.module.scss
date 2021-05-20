@@ -63,3 +63,9 @@
     font-size: 12px;
     color: black;
 }
+
+@media (max-width: 650px) {
+    .news {
+        display: none;
+    }
+}

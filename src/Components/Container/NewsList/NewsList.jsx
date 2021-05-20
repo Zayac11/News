@@ -19,10 +19,10 @@ const NewsList = (props) => {
                     {
                         props.section === 'Главная' &&
                             <>
-                               <span>Популярные</span><SwitchNews handleCheck={props.handleCheckPopular} checked={props.isPopular} />
+                               <span className={s.popular}>Популярные</span><SwitchNews handleCheck={props.handleCheckPopular} checked={props.isPopular} />
                             </>
                     }
-                   <span className={s.displaying}>Отображение</span><SwitchNews handleCheck={props.handleCheck} checked={props.checked} />
+                   <span className={s.displaying}>Отображение <SwitchNews handleCheck={props.handleCheck} checked={props.checked} /></span>
                 </div>
             </div>
 

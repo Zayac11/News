@@ -28,7 +28,6 @@ const NavbarContainer = (props) => {
     }
 
     const handleSubmit = () => {
-        debugger
         if(letters === '')props.history.push(`/search`)
         else props.history.push(`/search?letters=${letters}`)
     }

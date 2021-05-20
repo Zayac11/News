@@ -97,7 +97,7 @@
     outline: none;
     border: 1px solid white;
     font-size: 16px;
-    padding: 11px 20px;
+    padding: 11px 40px 11px 20px;
     color: white;
     background-color: transparent;
 }
@@ -177,6 +177,7 @@
         &::placeholder {
             font-size: 10px;
         }
+        padding: 11px 35px 11px 10px;
     }
 }
 

@@ -24,7 +24,12 @@ const NewsItemLarge = (props) => {
                         {props.short_description}
                     </div>
                     <div className={s.footer}>
-                        <img className={s.viewImg} src={view} alt="view_eye"/> <span className={s.viewCount}>{props.view_counter}</span>
+                        <div className={s.timePhone}>
+                            {props.created_at}
+                        </div>
+                        <span className={s.vision}>
+                            <img className={s.viewImg} src={view} alt="view_eye"/> <span className={s.viewCount}>{props.view_counter}</span>
+                        </span>
                     </div>
             </NavLink>
         </motion.div>

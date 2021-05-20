@@ -6,9 +6,10 @@ import {useDispatch, useSelector} from "react-redux";
 import {getNewsCategory, getRecentNews} from "../../../redux/news-reducer";
 import {getCurrentSection} from "../../../Common/getCurrentSection";
 import queryString from 'querystring'
+import {isDesktop} from 'react-device-detect'
 
 const NewsListContainer = (props) => {
-    const [checked, setChecked] = useState(localStorage.getItem('checked') === 'true')
+    const [checked, setChecked] = useState(isDesktop ? localStorage.getItem('checked') === 'true' : false)
     const [isPopular, setIsPopular] = useState(localStorage.getItem('is_popular') === 'true')
     const dispatch = useDispatch()
     const history = useHistory()

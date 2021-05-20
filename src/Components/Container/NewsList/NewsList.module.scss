@@ -42,5 +42,37 @@
 }
 
 .displaying {
-  margin-left: 30px;
+    @include flexible();
+    margin-left: 30px;
+}
+.popular {
+    @include flexible();
+
+}
+
+@media (max-width: 778px) {
+    .newsList {
+        padding: 25px 30px 0;
+    }
+}
+
+@media (max-width: 650px) {
+    .smallContainer {
+        padding: 25px 30px 0;
+    }
+    .displaying {
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .top {
+        margin-bottom: 15px;
+    }
+    .title, .popular {
+        font-size: 14px;
+    }
+    .newsList {
+        padding: 15px 15px 0;
+    }
 }

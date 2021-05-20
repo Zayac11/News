@@ -31,6 +31,14 @@
 
 @media (max-width: 480px) {
     .pageNumber {
-        font-size: 14px;
+        font-size: 12px;
+    }
+    .paginator {
+        padding: 5px 0;
+    }
+
+    .btn {
+        width: 44px;
+        font-size: 12px;
     }
 }
